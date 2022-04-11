@@ -32,6 +32,7 @@ Page({
                   //把获取到的信息复制到data中的loginInfo中
                   that.data.loginInfo = Object.assign( that.data.loginInfo, info );
                   console.log(info.userInfo.nickName);
+                  //在此可以使用云数据库进行存储用户信息
                   //调用后台的接口，把所有整合的个人信息传过去
                  // that.handlerLogin( that.data.loginInfo );
                 },
