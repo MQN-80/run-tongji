@@ -5,9 +5,10 @@
     <button bindtap="stopRun">暂停跑步</button>
     <button bindtap="direct">登录</button>
     <text>里程数：{{meters}}km\n</text>
-    <text>时间：{{time}}</text>
+    <text>时间：{{time}}\n</text>
+    <text>{{latitude}}   {{longitude}}</text>
 </view>
- 
+
 <view class="mainView">
    <map
         class="mapView"
