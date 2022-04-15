@@ -1,6 +1,6 @@
 var countTooGetLocation = 0;
 var total_micro_second = 0;
-var starRun = 0;
+var starRun = 0; //跑步标志
 var totalSecond  = 0;
 var oriMeters = 0.0;
 /* 毫秒级倒计时 */
@@ -15,13 +15,12 @@ function count_down(that) {
       that.updateTime(time);
     }
  
-      if (countTooGetLocation >= 5000) { //1000为1s
+      if (countTooGetLocation >= 5000) { //1000为1s，5s刷新一次
         that.getLocation();
         countTooGetLocation = 0;
       }   
  
  
- setTimeout
       setTimeout(function(){
         countTooGetLocation += 10;
     total_micro_second += 10;
@@ -89,6 +88,7 @@ Page({
     this.getLocation()
     console.log("onLoad")
     count_down(this);
+    
   },
   //****************************
   openLocation:function (){
@@ -118,7 +118,7 @@ Page({
  
  //****************************
   stopRun:function () {
-    starRun = 0;
+    starRun = 0; //暂停标志
     count_down(this);
   },
  
@@ -134,7 +134,15 @@ Page({
     })
  
   },
- 
+   send:function()
+   {
+       wx.request({
+         url: 'http://www.28jy10gtt.cn/api/getUserList',
+         success(res){
+           console.log(res);
+         }
+       })
+   },
  
 //****************************
   getLocation:function () {
@@ -152,7 +160,7 @@ Page({
             longitude: res.longitude,
             iconPath: '/resources/redPoint.png',
           };
-        var oriCovers = that.data.covers;
+        var oriCovers = that.data.covers; //存储经纬度的数组
  
         console.log("oriMeters----------")
         console.log(oriMeters);
@@ -162,7 +170,7 @@ Page({
           oriCovers.push(newCover);
         }
         len = oriCovers.length;
-        var lastCover = oriCovers[len-1];
+        var lastCover = oriCovers[len-1]; //上一次的经纬度
  
         console.log("oriCovers----------")
         console.log(oriCovers,len);
