@@ -1,0 +1,4 @@
+<view>
+<view class="title">登录同济健步，开始体验</view>
+    <button bindtap="login" style="position: relative; left: 0rpx; top: 26rpx">登录</button>
+</view>
