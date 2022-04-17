@@ -2,7 +2,7 @@
     "miniprogramRoot": "miniprogram/",
     "cloudfunctionRoot": "cloudfunctions/",
     "setting": {
-        "urlCheck": true,
+        "urlCheck": false,
         "es6": true,
         "enhance": true,
         "postcss": true,
@@ -39,7 +39,7 @@
         "useCompilerPlugins": false,
         "ignoreUploadUnusedFiles": true
     },
-    "appid": "wx5d8208dad09ddbf3",
+    "appid": "wxe9a9c73f636ac70a",
     "projectname": "miniprogram-1",
     "libVersion": "2.14.1",
     "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
