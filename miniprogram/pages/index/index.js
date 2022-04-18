@@ -1,8 +1,12 @@
+var QQMapWX = require('../../QQmap/qqmap-wx-jssdk.js');
 var countTooGetLocation = 0;
 var total_micro_second = 0;
-var starRun = 0; //跑步标志
+var starRun = 0;
 var totalSecond  = 0;
 var oriMeters = 0.0;
+var point = [];
+var that2;
+var qqmapsdk;
 /* 毫秒级倒计时 */
 function count_down(that) {
  
@@ -15,12 +19,17 @@ function count_down(that) {
       that.updateTime(time);
     }
  
-      if (countTooGetLocation >= 5000) { //1000为1s，5s刷新一次
+      if (countTooGetLocation >= 1000) { //1000为1s,每间隔一会儿画一条线
         that.getLocation();
         countTooGetLocation = 0;
+        /*************** */
+        console.log('re');
+        point.push({latitude: that.data.latitude, longitude : that.data.longitude});
+        //console.log(point);
+        drawline();
       }   
  
- 
+ setTimeout
       setTimeout(function(){
         countTooGetLocation += 10;
     total_micro_second += 10;
@@ -63,6 +72,18 @@ function fill_zero_prefix(num) {
     return num < 10 ? "0" + num : num
 }
  
+
+//画跑步路线的函数
+function drawline() {
+  that2.setData({
+     polyline : [{
+        points : point,
+         color : '#99FF00',
+         width : 4,
+         dottedLine : false
+     }]
+  });
+}
 //****************************************************************************************
 //****************************************************************************************
  
@@ -75,6 +96,7 @@ Page({
     markers: [],
     covers: [],
     meters: 0.00,
+    polyline : [],
     time: "0:00:00"
   },
   direct:function(){
@@ -84,15 +106,30 @@ Page({
 },
 //****************************
   onLoad:function(options){
+    //实例化腾讯地图API核心类
+    qqmapsdk = new QQMapWX({
+      key: 'Z3XBZ-KDSEX-XSC4U-7OYAT-YMKYZ-2SFIF'//密钥
+  });
     // 页面初始化 options为页面跳转所带来的参数
+    that2=this;
+    wx.getLocation({
+      isHighAccuracy: true,
+      type: 'gcj02',
+       success : function (res) {
+           that2.setData({
+               longitude : res.longitude,
+               latitude : res.latitude,
+           });
+       }
+   });
     this.getLocation()
     console.log("onLoad")
     count_down(this);
-    
   },
   //****************************
   openLocation:function (){
     wx.getLocation({
+      isHighAccuracy: true,
       type: 'gcj02', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
       success: function(res){
           wx.openLocation({
@@ -118,10 +155,21 @@ Page({
  
  //****************************
   stopRun:function () {
-    starRun = 0; //暂停标志
+    starRun = 0;
     count_down(this);
+    var time="0:00:00";
+    this.updateTime(time);
+    total_micro_second=0;
+    point.splice(0,point.length);
+    this.setData({
+      polyline:[]
+    });
   },
- 
+ //****************************
+  pauseRun:function(){
+     starRun=0;
+     count_down(this);
+   },
  
 //****************************
   updateTime:function (time) {
@@ -134,21 +182,13 @@ Page({
     })
  
   },
-   send:function()
-   {
-       wx.request({
-         url: 'http://www.28jy10gtt.cn/api/getUserList',
-         success(res){
-           console.log(res);
-         }
-       })
-   },
+ 
  
 //****************************
   getLocation:function () {
     var that = this
     wx.getLocation({
- 
+      isHighAccuracy: true,
       type: 'gcj02', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
       success: function(res){
         console.log("res----------")
@@ -160,7 +200,7 @@ Page({
             longitude: res.longitude,
             iconPath: '/resources/redPoint.png',
           };
-        var oriCovers = that.data.covers; //存储经纬度的数组
+        var oriCovers = that.data.covers;
  
         console.log("oriMeters----------")
         console.log(oriMeters);
@@ -170,7 +210,7 @@ Page({
           oriCovers.push(newCover);
         }
         len = oriCovers.length;
-        var lastCover = oriCovers[len-1]; //上一次的经纬度
+        var lastCover = oriCovers[len-1];
  
         console.log("oriCovers----------")
         console.log(oriCovers,len);
@@ -201,5 +241,4 @@ Page({
       },
     })
   }
- 
 })

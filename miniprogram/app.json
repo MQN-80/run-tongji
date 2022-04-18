@@ -1,18 +1,10 @@
 {
     "pages": [
+        "pages/login/login",
         "pages/index/index",
-        "pages/getOpenId/index",
-        "pages/getMiniProgramCode/index",
-        "pages/deployService/index",
-        "pages/createCollection/index",
-        "pages/uploadFile/index",
-        "pages/selectRecord/index",
-        "pages/updateRecord/index",
-        "pages/updateRecordResult/index",
-        "pages/updateRecordSuccess/index",
-        "pages/sumRecord/index",
-        "pages/sumRecordResult/index",
-        "pages/login/index"
+        "pages/home/home",
+        "pages/index2/index2",
+        "pages/userinfo/userinfo"
     ],
     "permission": {
         "scope.userLocation": {
@@ -27,5 +19,30 @@
         "navigationBarTextStyle": "black"
     },
     "sitemapLocation": "sitemap.json",
-    "style": "v2"
+    "style": "v2",
+    "tabBar": {
+        "color": "#a9b7b7",
+        "selectedColor": "#11cd6e",
+        "borderStyle": "white",
+        "list": [
+          {
+            "selectedIconPath": "images/guidance_filled.png",
+            "iconPath": "images/guidance.png",
+            "pagePath": "pages/index2/index2",
+            "text": "指导"
+          },
+          {
+            "selectedIconPath": "images/run_filled.png",
+            "iconPath": "images/run.png",
+            "pagePath": "pages/index/index",
+            "text": "跑步"
+          },
+          {
+            "selectedIconPath": "images/account_filled.png",
+            "iconPath": "images/account.png",
+            "pagePath": "pages/home/home",
+            "text": "数据"
+          }
+        ]
+      }
 }
