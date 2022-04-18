@@ -13,18 +13,12 @@ Page({
     },
     openid:'', //用户的唯一身份标识
     nickname:'', //用户的微信昵称
+    flag:1
     },
     login()
     {
     let that = this;
-    var judge=0;
       //调用微信小程序的登录接口
-      wx.showModal({
-        title: '温馨提示',
-        content: '微信授权登录后才能正常使用小程序功能',
-        cancelText: '拒绝',
-        confirmText: '同意',
-        success( sucessInfo ) {
           //调用微信小程序的获取用户信息的接口
           wx.getUserProfile({
             desc: '用于完善会员资料', // 声明获取用户个人信息后的用途
@@ -33,13 +27,12 @@ Page({
               //把获取到的信息复制到data中的loginInfo中
               that.data.loginInfo = Object.assign( that.data.loginInfo, info );
               console.log(info.userInfo.nickName);
-              judge=1;
               that.nickname=info.userInfo.nickName;
               that.setData({
                 nickname:info.userInfo.nickName
               })
               wx.switchTab({
-                url:"../userinfo/userinfo",
+                url:"../home/home",
               })
               //在此可以使用云数据库进行存储用户信息
               //调用后台的接口，把所有整合的个人信息传过去
@@ -47,15 +40,8 @@ Page({
             },
             fail(e) {
               console.log('获取用户信息失败', e);
-              
             }
           })
-        },
-        fail() {
-          console.log("拒绝");
-        },
-        complete() {}
-      })
      wx.login({
         success(e) {
           //that.data.loginInfo.code = e.code; //拿到的code存储在data中
@@ -79,6 +65,7 @@ Page({
                    that.setData({
                      openid:openIdRes.data.openid
                    })
+                   that.judge(that.openid);
                    //将openid作为主键存储到数据库中，再加上用户姓名和性别作为用户基本信息
               },
               fail: function(error) {
@@ -98,36 +85,58 @@ Page({
         }
       })
       setTimeout(this.handlerLogin,5000);
-    },
-//调用后台的接口，传递信息
-handlerLogin() {
-  console.log(this.nickname);
-  wx.request({
-    url: api.userMessage, //用于请求用户的openid，作为数据库中的主键
-    data: {
-       //上传用户基本信息
-      nickname:this.nickname,
-      openid:this.openid
-    },
-    method: 'GET',
-    header: { 'content-type': 'application/json'},
-    success: function(){
-         console.log("上传成功");
-         //将openid作为主键存储到数据库中，再加上用户姓名和性别作为用户基本信息
-    },
-    fail: function(error) {
-        console.info("上传失败");
-        console.info(error);
-    }
-})
   },
+  judge:function(appid)
+  {
+    let that=this;
+      wx.cloud.callFunction({
+          // 云函数名称
+          name: 'user',
+          // 传给云函数的参数
+          data: {
+            type:'is_Find',
+            openid:appid,
+          },
+          success: function(res) {
+            console.log(res.result.data.length);
+            that.flag=res.result.data.length;
+            that.setData({
+                flag:res.result.data.length,
+            })
+          },
+          fail: console.error
+        })
+  },
+//调用后台的接口，传递信息
+  handlerLogin() {
+  console.log(this.flag);
+  if(!this.flag)
+  {
+  console.log("ss");
+  console.log(this.nickname);
+  wx.cloud.callFunction({
+    // 云函数名称
+    name: 'user',
+    // 传给云函数的参数
+    data: {
+      type:'basicId',
+      nickname:this.nickname,
+      openid:this.openid,
+    },
+    success: function(res) {
+      console.log("用户基本信息已上传")
+    },
+    fail: console.error
+  })
+}
+  
+},
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
 
     },
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
