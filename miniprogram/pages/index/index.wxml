@@ -2,13 +2,12 @@
     <image class="icon" src="/resources/joyrun.png" mode="aspectFill"/>
     <button bindtap="openLocation">打开位置</button>
     <button bindtap="starRun">开始跑步</button>
-    <button bindtap="stopRun">暂停跑步</button>
-    <button bindtap="direct">登录</button>
+    <button bindtap="pauseRun">暂停跑步</button>
+    <button bindtap="stopRun">中止跑步</button>
     <text>里程数：{{meters}}km\n</text>
-    <text>时间：{{time}}\n</text>
-    <text>{{latitude}}   {{longitude}}</text>
+    <text>时间：{{time}}</text>
 </view>
-
+ 
 <view class="mainView">
    <map
         class="mapView"
@@ -17,6 +16,9 @@
         longitude="{{longitude}}"
         markers="{{markers}}"
         covers="{{covers}}"
+        scale="18" 
+        polyline="{{polyline}}"
+        show-location style="width: 100%; height: 300px;"
         >
     </map>
  
