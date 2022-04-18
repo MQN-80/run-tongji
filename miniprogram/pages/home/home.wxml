@@ -1,0 +1,13 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+  <view class="imag" style="position: fixed; left: 10rpx; top: 5rpx">
+  <image src="http://www.28jy10gtt.cn/source/account.png"  style="width: 183rpx; height: 143rpx; display: inline-block; box-sizing: border-box">
+  </image>
+  <text style="width: 701rpx; height: 50rpx; display: block; box-sizing: border-box; left: 24rpx; top: 225rpx; position: fixed; font-size: 20px">{{nickname}}</text>
+  <text style="position: fixed; left: 24rpx; top: 308rpx">
+  {{man}} |{{region}}
+  </text>
+  <text style="position:fixed;">
+  </text>
+</view>
+</view>

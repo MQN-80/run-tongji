@@ -1,11 +1,13 @@
-// pages/userinfo/userinfo.js
+// pages/home/index.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+    nickname:'梦秋年',
+    man:'男',
+    region:'上海'
     },
 
     /**
