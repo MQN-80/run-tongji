@@ -30,8 +30,6 @@
         },
         "useIsolateContext": false,
         "userConfirmedBundleSwitch": false,
-        "packNpmManually": false,
-        "packNpmRelationList": [],
         "minifyWXSS": true,
         "disableUseStrict": false,
         "minifyWXML": true,
