@@ -1,4 +1,6 @@
 var QQMapWX = require('../../QQmap/qqmap-wx-jssdk.js');
+var util=require('../../utils/util')
+var app=getApp();
 var countTooGetLocation = 0;
 var total_micro_second = 0;
 var starRun = 0;
@@ -182,7 +184,27 @@ Page({
     })
  
   },
- 
+  send_distance:function(){
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'user',
+      // 传给云函数的参数
+      data: {
+        type:'send_distance',
+        openid:app.globalData.openid,
+        distance:12,
+        runTime:12,
+        calorie:14,
+        step_number:15,
+        stride:16,
+        time:util.formatTime(new Date())
+      },
+      success: function(res) {
+        console.log("上传成功");
+      },
+      fail: console.error
+    })
+  },
  
 //****************************
   getLocation:function () {

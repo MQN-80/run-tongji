@@ -4,7 +4,9 @@
         "pages/index/index",
         "pages/home/home",
         "pages/index2/index2",
-        "pages/userinfo/userinfo"
+        "pages/userinfo/userinfo",
+        "pages/poseDetect/poseDetect",
+        "pages/resultShow/resultShow"
     ],
     "permission": {
         "scope.userLocation": {
@@ -15,34 +17,43 @@
         "backgroundColor": "#F6F6F6",
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#F6F6F6",
-        "navigationBarTitleText": "同济大学嘉定校区疫情防控系统",
+        "navigationBarTitleText": "同心健步",
         "navigationBarTextStyle": "black"
+    },
+    "usingComponents": {
+        "van-toast": "@vant/weapp/toast/index"
     },
     "sitemapLocation": "sitemap.json",
     "style": "v2",
+    "plugins": {
+        "tfjsPlugin": {
+            "version": "0.2.0",
+            "provider": "wx6afed118d9e81df9"
+        }
+    },
     "tabBar": {
         "color": "#a9b7b7",
         "selectedColor": "#11cd6e",
         "borderStyle": "white",
         "list": [
-          {
-            "selectedIconPath": "images/guidance_filled.png",
-            "iconPath": "images/guidance.png",
-            "pagePath": "pages/index2/index2",
-            "text": "指导"
-          },
-          {
-            "selectedIconPath": "images/run_filled.png",
-            "iconPath": "images/run.png",
-            "pagePath": "pages/index/index",
-            "text": "跑步"
-          },
-          {
-            "selectedIconPath": "images/account_filled.png",
-            "iconPath": "images/account.png",
-            "pagePath": "pages/home/home",
-            "text": "数据"
-          }
+            {
+                "selectedIconPath": "images/guidance_filled.png",
+                "iconPath": "images/guidance.png",
+                "pagePath": "pages/index2/index2",
+                "text": "指导"
+            },
+            {
+                "selectedIconPath": "images/run_filled.png",
+                "iconPath": "images/run.png",
+                "pagePath": "pages/index/index",
+                "text": "跑步"
+            },
+            {
+                "selectedIconPath": "images/account_filled.png",
+                "iconPath": "images/account.png",
+                "pagePath": "pages/home/home",
+                "text": "数据"
+            }
         ]
-      }
+    }
 }

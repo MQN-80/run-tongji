@@ -4,6 +4,7 @@
     <button bindtap="starRun">开始跑步</button>
     <button bindtap="pauseRun">暂停跑步</button>
     <button bindtap="stopRun">中止跑步</button>
+    <button bindtap="send_distance">上传</button>
     <text>里程数：{{meters}}km\n</text>
     <text>时间：{{time}}</text>
 </view>
