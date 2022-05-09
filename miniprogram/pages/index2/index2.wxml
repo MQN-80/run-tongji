@@ -1,4 +1,2 @@
 <!--pages/index2/index2.wxml-->
-<text>跑姿指导</text>
-<button bindtap="ss">跑步姿势分析</button>
-<button bindtap="ss1">跑步成绩预测</button>
+<text>pages/index2/index2.wxml</text>

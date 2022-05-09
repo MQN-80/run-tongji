@@ -1,5 +1,0 @@
-<!--pages/predict/predict.wxml-->
-<text>选择输入成绩的距离</text>
-<input type="text" bindinput="distance_input" placeholder="请输入距离" />
-<input type="text" bindinput="time_input" placeholder="请输入时间" />
-<button bindtap="ss1">获取跑力值</button>

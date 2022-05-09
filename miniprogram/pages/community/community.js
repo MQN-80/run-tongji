@@ -1,4 +1,4 @@
-// pages/index2/index2.js
+// pages/community/community.js
 Component({
     /**
      * 组件的属性列表
