@@ -1,5 +1,0 @@
-<view>
-<view class="title"style="position: fixed" style="position: fixed; left: 178rpx; top: 168rpx; width: 416rpx; height: 124rpx; display: block; box-sizing: border-box">登录同济健步，开始体验</view>
-    <van-button bindtap="login" type="primary" round type="info" size="large" style="position: fixed; left: 316rpx; top: 344rpx; width: 140rpx; height: 100rpx">登录</van-button>
-</view>
-
