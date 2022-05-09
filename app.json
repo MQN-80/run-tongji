@@ -1,0 +1,74 @@
+{
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-skeleton": "@vant/weapp/skeleton/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-circle": "@vant/weapp/circle/index",
+    "van-count-down": "@vant/weapp/count-down/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-transition": "@vant/weapp/transition/index",
+    "van-notify": "@vant/weapp/notify/index"
+  },
+    "pages": [
+      "pages/bodydata/bodydata",
+      "pages/index/index",
+      "pages/home/home",
+      "pages/login/login",
+      "pages/index2/index2",
+      "pages/userinfo/userinfo",
+      "pages/community/community",
+      "pages/total_time/total_time"
+    ],
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+    },
+    "window": {
+        "backgroundColor": "#F6F6F6",
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#F6F6F6",
+        "navigationBarTitleText": "同新健步",
+        "navigationBarTextStyle": "black"
+    },
+    "sitemapLocation": "sitemap.json",
+    "tabBar": {
+        "color": "#a9b7b7",
+        "selectedColor": "#11cd6e",
+        "borderStyle": "white",
+        "list": [
+          {
+            "selectedIconPath": "images/guidance_filled.png",
+            "iconPath": "images/guidance.png",
+            "pagePath": "pages/index2/index2",
+            "text": "指导"
+          },
+          {
+            "selectedIconPath": "images/community_filled.png",
+            "iconPath": "images/community.png",
+            "pagePath": "pages/community/community",
+            "text": "社区"
+          },
+          {
+            "selectedIconPath": "images/run_filled.png",
+            "iconPath": "images/run.png",
+            "pagePath": "pages/index/index",
+            "text": "跑步"
+          },
+          {
+            "selectedIconPath": "images/account_filled.png",
+            "iconPath": "images/account.png",
+            "pagePath": "pages/home/home",
+            "text": "数据"
+          }
+        ]
+      }
+}
