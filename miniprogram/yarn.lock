@@ -68,10 +68,10 @@
   resolved "https://registry.yarnpkg.com/@types/webgl2/-/webgl2-0.0.5.tgz#dd925e20ab8ace80eb4b1e46fda5b109c508fb0d"
   integrity sha512-oGaKsBbxQOY5+aJFV3KECDhGaXt+yZJt2y/OZsnQGLRkH6Fvr7rv4pCt3SRH1somIHfej/c4u7NSpCyd9x+1Ow==
 
-"@vant/weapp@^1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@vant/weapp/-/weapp-1.6.1.tgz#01c6f395c0a67f56b8caae36a551d268b1fe0605"
-  integrity sha512-HkQHodqmSPB0bTILo5DnM/avkpeSBfQHo42kN4HJa504SCNIc2DoF0VrAl/CaZB+2DMrElnEnM+//vf5rENtNQ==
+"@vant/weapp@^1.10.3":
+  version "1.10.3"
+  resolved "https://registry.npmmirror.com/@vant/weapp/-/weapp-1.10.3.tgz#c2df7437cf5784530835cf764cb7f4923f981e25"
+  integrity sha512-CcG5umI+zlJRN6hQXPeknOenPkVm6WBEgBaB6Y94kOmKLx9NHtHBdURwxuJEA4q4mxhUdOuf6sV7I8tZBnCVxw==
 
 fetch-wechat@^0.0.3:
   version "0.0.3"

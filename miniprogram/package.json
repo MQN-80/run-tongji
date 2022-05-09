@@ -1,4 +1,4 @@
-  {
+{
   "name": "miniprogram-1",
   "version": "0.0.1",
   "main": "dist/index.js",
@@ -10,7 +10,7 @@
     "@tensorflow/tfjs-backend-webgl": "^2.7.0",
     "@tensorflow/tfjs-converter": "^2.7.0",
     "@tensorflow/tfjs-core": "^2.7.0",
-    "@vant/weapp": "^1.6.1",
+    "@vant/weapp": "^1.10.3",
     "fetch-wechat": "^0.0.3"
   }
 }

@@ -1,31 +1,34 @@
 {
-  "usingComponents": {
-    "van-button": "@vant/weapp/button/index",
-    "van-skeleton": "@vant/weapp/skeleton/index",
-    "van-card": "@vant/weapp/card/index",
-    "van-grid": "@vant/weapp/grid/index",
-    "van-grid-item": "@vant/weapp/grid-item/index",
-    "van-divider": "@vant/weapp/divider/index",
-    "van-cell": "@vant/weapp/cell/index",
-    "van-cell-group": "@vant/weapp/cell-group/index",
-    "van-collapse": "@vant/weapp/collapse/index",
-    "van-collapse-item": "@vant/weapp/collapse-item/index",
-    "van-circle": "@vant/weapp/circle/index",
-    "van-count-down": "@vant/weapp/count-down/index",
-    "van-popup": "@vant/weapp/popup/index",
-    "van-action-sheet": "@vant/weapp/action-sheet/index",
-    "van-transition": "@vant/weapp/transition/index",
-    "van-notify": "@vant/weapp/notify/index"
-  },
+    "usingComponents": {
+        "van-button": "./miniprogram_npm/@vant/weapp/button/index",
+        "van-skeleton": "./miniprogram_npm/@vant/weapp/skeleton/index",
+        "van-card": "./miniprogram_npm/@vant/weapp/card/index",
+        "van-grid": "./miniprogram_npm/@vant/weapp/grid/index",
+        "van-grid-item": "./miniprogram_npm/@vant/weapp/grid-item/index",
+        "van-divider": "./miniprogram_npm/@vant/weapp/divider/index",
+        "van-cell": "./miniprogram_npm/@vant/weapp/cell/index",
+        "van-cell-group": "./miniprogram_npm/@vant/weapp/cell-group/index",
+        "van-collapse": "./miniprogram_npm/@vant/weapp/collapse/index",
+        "van-collapse-item": "./miniprogram_npm/@vant/weapp/collapse-item/index",
+        "van-circle": "./miniprogram_npm/@vant/weapp/circle/index",
+        "van-count-down": "./miniprogram_npm/@vant/weapp/count-down/index",
+        "van-popup": "./miniprogram_npm/@vant/weapp/popup/index",
+        "van-action-sheet": "./miniprogram_npm/@vant/weapp/action-sheet/index",
+        "van-transition": "./miniprogram_npm/@vant/weapp/transition/index",
+        "van-notify": "./miniprogram_npm/@vant/weapp/notify/index"
+      },
     "pages": [
-      "pages/bodydata/bodydata",
-      "pages/index/index",
-      "pages/home/home",
-      "pages/login/login",
-      "pages/index2/index2",
-      "pages/userinfo/userinfo",
-      "pages/community/community",
-      "pages/total_time/total_time"
+        "pages/login/login",
+        "pages/index/index",
+        "pages/home/home",
+        "pages/index2/index2",
+        "pages/userinfo/userinfo",
+        "pages/poseDetect/poseDetect",
+        "pages/resultShow/resultShow",
+        "pages/predict/predict",
+        "pages/bodydata/bodydata",
+        "pages/community/community",
+        "pages/total_time/total_time"
     ],
     "permission": {
         "scope.userLocation": {
@@ -36,39 +39,46 @@
         "backgroundColor": "#F6F6F6",
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#F6F6F6",
-        "navigationBarTitleText": "同新健步",
+        "navigationBarTitleText": "同心健步",
         "navigationBarTextStyle": "black"
     },
     "sitemapLocation": "sitemap.json",
+    "style": "v2",
+    "plugins": {
+        "tfjsPlugin": {
+            "version": "0.2.0",
+            "provider": "wx6afed118d9e81df9"
+        }
+    },
     "tabBar": {
         "color": "#a9b7b7",
         "selectedColor": "#11cd6e",
         "borderStyle": "white",
         "list": [
-          {
-            "selectedIconPath": "images/guidance_filled.png",
-            "iconPath": "images/guidance.png",
-            "pagePath": "pages/index2/index2",
-            "text": "指导"
-          },
-          {
-            "selectedIconPath": "images/community_filled.png",
-            "iconPath": "images/community.png",
-            "pagePath": "pages/community/community",
-            "text": "社区"
-          },
-          {
-            "selectedIconPath": "images/run_filled.png",
-            "iconPath": "images/run.png",
-            "pagePath": "pages/index/index",
-            "text": "跑步"
-          },
-          {
-            "selectedIconPath": "images/account_filled.png",
-            "iconPath": "images/account.png",
-            "pagePath": "pages/home/home",
-            "text": "数据"
-          }
+            {
+                "selectedIconPath": "images/guidance_filled.png",
+                "iconPath": "images/guidance.png",
+                "pagePath": "pages/index2/index2",
+                "text": "指导"
+            },
+            {
+                "selectedIconPath": "images/community_filled.png",
+                "iconPath": "images/community.png",
+                "pagePath": "pages/community/community",
+                "text": "社区"
+            },
+            {
+                "selectedIconPath": "images/run_filled.png",
+                "iconPath": "images/run.png",
+                "pagePath": "pages/index/index",
+                "text": "跑步"
+            },
+            {
+                "selectedIconPath": "images/account_filled.png",
+                "iconPath": "images/account.png",
+                "pagePath": "pages/home/home",
+                "text": "数据"
+            }
         ]
-      }
+    }
 }
