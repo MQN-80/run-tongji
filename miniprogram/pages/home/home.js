@@ -1,10 +1,5 @@
 // pages/home/index.js
 var app=getApp();
-var plugin=requirePlugin('tfjsPlugin')
-var tf=require('@tensorflow/tfjs-core')
-var fetchWechat=require('fetch-wechat')
-require('@tensorflow/tfjs-backend-webgl')
-require('@tensorflow/tfjs-backend-cpu')
 Page({
 
     /**
@@ -14,13 +9,24 @@ Page({
     nickname:'',
     man:'男',
     region:'上海',
-    avatorUrl:'http://www.28jy10gtt.cn/source/account.png' //用户头像地址
+    avatorUrl:'http://www.28jy10gtt.cn/source/account.png', //用户头像地址
+    run_data:[{
+        calorie:[],
+        distance:[],
+        location:[],
+        runtime:[],
+        step_number:[],
+        stride:[],
+        time:[]
+    }],
+    running_data:''
     },
     
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.get_runRecord();
     },
 
     /**
@@ -40,7 +46,7 @@ Page({
         })
     },
     get_runRecord: function(){
-        console.log(Math.acos(0.5)*180/Math.PI);
+        var that=this;
         wx.cloud.callFunction({
             name:'user',
             data:{
@@ -48,18 +54,22 @@ Page({
                 openid:app.globalData.openid,
             },
             success:function(res){
-                console.log(res.result.data[0].calorie);
+                console.log(res.result.data[0]);
+                that.setData({
+                    /*run_data:{
+                    calorie:res.result.data[0].calorie,
+                    distance:res.result.data[0].distance,
+                    location:res.result.data[0].location,
+                    runtime:res.result.data[0].runtime,
+                    step_number:res.result.data[0].step_number,
+                    stride:res.result.data[0].stride,
+                    time:res.result.data[0].time
+                    },*/
+                    running_data:res.result.data
+                })
             },
             fail:console.error
         })
-    },
-    get_(){
-       plugin.configPlugin({
-           fetchFunc:fetchWechat.fetchFunc(),
-           tf,canvas:wx.createOffscreenCanvas()
-       })
-       tf.tensor([1,2,3,4]);
-
     },
     /**
      * 生命周期函数--监听页面隐藏
@@ -94,5 +104,10 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    get_bodydata(){
+        wx.navigateTo({
+            url:'../bodydata/bodydata',
+        })
     }
 })
