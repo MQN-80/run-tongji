@@ -27,19 +27,9 @@ Page({
 
     },
     ss1(){
-        wx.cloud.callFunction({
-            // 云函数名称
-            name: 'user',
-            // 传给云函数的参数
-            data: {
-              type:'predict',
-              openid:app.globalData.openid,
-            },
-            success: function(res) {
-              console.log("上传成功")
-            },
-            fail: console.error
-          })
+        wx.navigateTo({
+          url: '../predict/predict',
+        })
     },
     /**
      * 生命周期函数--监听页面显示
