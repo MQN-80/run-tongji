@@ -1,13 +1,34 @@
 <!--pages/home/home.wxml-->
-<view class="container">
-  <view class="imag" style="position: fixed; left: 10rpx; top: 5rpx">
-  <image src="http://www.28jy10gtt.cn/source/account.png"  style="width: 183rpx; height: 143rpx; display: inline-block; box-sizing: border-box">
-  </image>
-  <text style="width: 701rpx; height: 50rpx; display: block; box-sizing: border-box; left: 24rpx; top: 225rpx; position: fixed; font-size: 20px">{{nickname}}</text>
-  <text style="position: fixed; left: 24rpx; top: 308rpx">
-  {{man}} |{{region}}
-  </text>
-  <text style="position:fixed;">
-  </text>
+<view class="homepage">
+  <image class="head_portrait" src="{{avatorUrl}}"></image>
+  <text class="user_name">{{nickname}}</text>
+  <text class="address" >{{man}}|{{region}}</text>
+  <text class="body_data" bindtap="get_bodydata">身体数据 ></text>
 </view>
+<van-grid 
+column-num="1"
+clickable="true">
+  <van-grid-item 
+  icon="https://636c-cloud1-6gnuhn9p12e5fa11-1310569801.tcb.qcloud.la/run_total_time.png?sign=0d7dddddb81b2c78f014709fa9f5a5df&t=1650805716" 
+  link-type="navigateTo" 
+  url="/pages/total_time/total_time"
+  text="总时长 >"/>
+</van-grid>
+<view>
+  <van-divider
+  contentPosition="center"
+  customStyle="color: #1989fa; border-color: #1989fa; font-size: 30px;">运动数据</van-divider>
+  <van-grid
+  column-num="1"
+  center="{{false}}">
+  <view wx:for="{{running_data}}">
+    <van-cell-group title="日期：{{item.time}}" inset>
+      <van-cell title="跑步消耗（卡路里）：" value="{{item.calorie}}" />
+      <van-cell title="跑步距离：" value="{{item.distance}}"/>
+      <van-cell title="跑步耗时：" value="{{item.runtime}}"/>
+      <van-cell title="跑步步数：" value="{{item.step_number}}"/>
+    </van-cell-group>
+    <van-divider customStyle="color: #1989fa; border-color: #1989fa; font-size: 30px;"/>
+  </view>
+ </van-grid>
 </view>

@@ -10,5 +10,11 @@ exports.main = async (event, context) => {
       case 'is_Find':
         return await basicId.main(event,context);
         break;
+      case 'send_distance':
+        return await basicId.main(event,context);
+        break;
+      case'get_runRecord':
+        return await basicId.main(event,context);
+        break; 
     }
 }

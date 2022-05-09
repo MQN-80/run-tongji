@@ -26,8 +26,9 @@ Page({
             success(info) {
               //把获取到的信息复制到data中的loginInfo中
               that.data.loginInfo = Object.assign( that.data.loginInfo, info );
-              console.log(info.userInfo.nickName);
               that.nickname=info.userInfo.nickName;
+              app.globalData.avatorUrl=info.userInfo.avatarUrl;
+              app.globalData.nickname=info.userInfo.nickName;
               that.setData({
                 nickname:info.userInfo.nickName
               })
@@ -62,6 +63,7 @@ Page({
               success: function(openIdRes){
                    console.log("登录成功返回的openId：" + openIdRes.data.openid);
                    that.openid=openIdRes.data.openid;
+                   app.globalData.openid=openIdRes.data.openid; //存储到全局变量中
                    that.setData({
                      openid:openIdRes.data.openid
                    })
@@ -108,7 +110,7 @@ Page({
         })
   },
 //调用后台的接口，传递信息
-  handlerLogin() {
+  async handlerLogin() {
   console.log(this.flag);
   if(!this.flag)
   {

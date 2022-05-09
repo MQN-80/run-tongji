@@ -6,7 +6,10 @@ var totalSecond  = 0;
 var oriMeters = 0.0;
 var point = [];
 var that2;
+var pause=true;
 var qqmapsdk;
+import Notify from "../../miniprogram_npm/@vant/weapp/notify/notify";
+
 /* 毫秒级倒计时 */
 function count_down(that) {
  
@@ -97,8 +100,71 @@ Page({
     covers: [],
     meters: 0.00,
     polyline : [],
-    time: "0:00:00"
+    time: "0:00:00",
+    start_run_disabled:false,
+    pause_run_disabled:true,
+    stop_run_disabled:true,
+    pause_name:"暂停跑步",
+    count:0,
+    speed:50,
+    activeNames: ['1'],
+    countTimer:null,
+    show: false,
+    show1:false,
+    gradientColor: {
+        '0%': 'violet',
+        '100%': 'blue',
+      },
   },
+
+  showPopup() {
+    this.setData({ show: true });
+  },
+
+  onClose() {
+    this.setData({ show: false });
+  },
+
+  onOpen(){
+      this.setData({show:true});
+  },
+
+  countInterval: function () {
+      this.setData({
+          speed:50
+      })
+    // 设置倒计时 定时器 每100毫秒执行一次，计数器count+1 ,耗时6秒绘一圈
+    this.countTimer = setInterval(() => {
+      if (this.data.count < 100) {
+        this.setData({
+            count:this.data.count+5
+        });
+      } else {
+        clearInterval(this.countTimer);
+      }
+    }, 100)
+  },
+
+  countEND:function(){
+    clearInterval(this.countTimer);
+    if(this.data.count>=100)
+    {
+        this.stopRun();
+        Notify({ type: 'success', message: '已停止跑步！', duration: 1000,});
+    }
+    this.setData({
+        show1:true,
+        count:0,
+        speed:200
+    });
+  },
+
+  onChange(event) {
+    this.setData({
+      activeNames: event.detail,
+    });
+  },
+  
   direct:function(){
   wx.navigateTo({
     url: '/pages/login/index'
@@ -141,12 +207,16 @@ Page({
     })
   },
  
- 
 //****************************
-  starRun :function () {
+  startRun :function () {
     if (starRun == 1) {
       return;
     }
+    this.setData({
+      start_run_disabled:true,
+    pause_run_disabled:false,
+    stop_run_disabled:false
+    });
     starRun = 1;
     count_down(this);
     this.getLocation();
@@ -155,6 +225,11 @@ Page({
  
  //****************************
   stopRun:function () {
+    this.setData({
+      start_run_disabled:false,
+    pause_run_disabled:true,
+    stop_run_disabled:true
+    });
     starRun = 0;
     count_down(this);
     var time="0:00:00";
@@ -164,11 +239,31 @@ Page({
     this.setData({
       polyline:[]
     });
+    pause=true;
+    this.setData({
+      pause_name:"暂停跑步"
+     })
   },
  //****************************
   pauseRun:function(){
+    if(pause==true)
+    {
      starRun=0;
-     count_down(this);
+     pause=false;
+     this.setData({
+      pause_name:"继续跑步"
+     })
+    }
+    else
+    {
+      starRun = 1;
+      count_down(this);
+      this.getLocation();
+      pause=true;
+      this.setData({
+        pause_name:"暂停跑步"
+       })
+    }
    },
  
 //****************************
