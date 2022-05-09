@@ -43,7 +43,6 @@
         "navigationBarTextStyle": "black"
     },
     "sitemapLocation": "sitemap.json",
-    "style": "v2",
     "plugins": {
         "tfjsPlugin": {
             "version": "0.2.0",
