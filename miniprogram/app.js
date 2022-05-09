@@ -8,7 +8,10 @@ App({
         env:'cloud1-6gnuhn9p12e5fa11'  //云开发环境id
       })
     }
-
-    this.globalData = {};
+  },
+  globalData:{
+    nickname:'User',
+    openid:'o62_v5dEv6YS1pGfpxisQAW3YsjQ', //用户openid为用户唯一标识
+    avatorUrl:'http://www.28jy10gtt.cn/source/account.png' //用户头像url地址
   }
 });
