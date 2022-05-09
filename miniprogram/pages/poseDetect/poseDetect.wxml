@@ -1,0 +1,10 @@
+<!-- pages/index/index.wxml -->
+
+<camera class="camera" device-position="{{devicePosition}}" frame-size="medium" flash="off" binderror="onCameraError">
+  <canvas class="pose-canvas" canvas-id="pose">
+    <cover-view class="cover-btn" bindtap="handleSwitchCamera" style="position: fixed; left: 40rpx; top: 1055rpx">切换摄像头</cover-view>
+    <button style="position: relative; left: -256rpx; top: 172rpx" bindtap="back">返回</button>
+    <cover-view class="cover-btn" bindtap="Show" style="position: fixed; left: 40rpx; top: 1200rpx">生成跑步分析结果</cover-view>
+  </canvas>
+</camera>
+<van-toast id="van-toast" />
