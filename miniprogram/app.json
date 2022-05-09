@@ -6,7 +6,8 @@
         "pages/index2/index2",
         "pages/userinfo/userinfo",
         "pages/poseDetect/poseDetect",
-        "pages/resultShow/resultShow"
+        "pages/resultShow/resultShow",
+        "pages/predict/predict"
     ],
     "permission": {
         "scope.userLocation": {
