@@ -38,8 +38,7 @@ App({
        type:'get_openid',
        },
        success:function(res){
-        that.openid=res.result.openid;
-        console.log(res.result.openid);
+        that.globalData.openid=res.result.openid;
        }
      })
   },
