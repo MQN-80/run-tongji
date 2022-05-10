@@ -6,6 +6,10 @@ let flag=1;
 const db = cloud.database();
 exports.main= async(event,context)=>{
     switch(event.type){
+      case 'get_openid':{
+        return user_information(event)
+      }
+      break;
       case'is_Find':{
         return find(event);
       }
@@ -23,8 +27,16 @@ exports.main= async(event,context)=>{
       }
       break;
       }
+
      
     }
+//返回用户user_id信息
+function user_information(){
+  const wxContext=cloud.getWXContext();
+  return{
+    openid:wxContext.OPENID,
+  }
+}
 // 创建集合云函数入口函数
 async function add(event){
     await db.collection('user').add({

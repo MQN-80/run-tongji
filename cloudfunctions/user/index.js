@@ -17,6 +17,9 @@ exports.main = async (event, context) => {
       case'get_runRecord':
         return await basicId.main(event,context);
         break; 
+      case 'get_openid':
+        return await basicId.main(event,context);
+        break; 
       case'predict':
         return await predict.main(event,context);
         break;
