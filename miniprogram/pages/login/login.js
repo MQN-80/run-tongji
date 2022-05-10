@@ -43,8 +43,7 @@ Page({
               console.log('获取用户信息失败', e);
             }
           })
-      this.judge(app.globalData.openid);
-      setTimeout(this.handlerLogin,5000);
+      setTimeout(this.handlerLogin,1000);
   },
   judge:function(appid)
   {
@@ -95,7 +94,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+      this.judge(app.globalData.openid);  //查看用户是否已经登录过
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
