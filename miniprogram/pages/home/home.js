@@ -56,15 +56,6 @@ Page({
             success:function(res){
                 console.log(res.result.data[0]);
                 that.setData({
-                    /*run_data:{
-                    calorie:res.result.data[0].calorie,
-                    distance:res.result.data[0].distance,
-                    location:res.result.data[0].location,
-                    runtime:res.result.data[0].runtime,
-                    step_number:res.result.data[0].step_number,
-                    stride:res.result.data[0].stride,
-                    time:res.result.data[0].time
-                    },*/
                     running_data:res.result.data
                 })
             },
