@@ -43,49 +43,7 @@ Page({
               console.log('获取用户信息失败', e);
             }
           })
-     wx.login({
-        success(e) {
-          //that.data.loginInfo.code = e.code; //拿到的code存储在data中
-          console.log(e);
-          if(e.code){
-            wx.request({
-              url: 'https://api.weixin.qq.com/sns/jscode2session', //用于请求用户的openid，作为数据库中的主键
-              data: {
-                 //填上自己的小程序唯一标识
-                appid: 'wxe9a9c73f636ac70a',
-                 //填上自己的小程序的 app secret
-                secret: '611c80114f7032d312ba97295ca21008', //小程序密钥
-                js_code: e.code,
-                grant_type: 'authorization_code',
-              },
-              method: 'GET',
-              header: { 'content-type': 'application/json'},
-              success: function(openIdRes){
-                   console.log("登录成功返回的openId：" + openIdRes.data.openid);
-                   that.openid=openIdRes.data.openid;
-                   app.globalData.openid=openIdRes.data.openid; //存储到全局变量中
-                   that.setData({
-                     openid:openIdRes.data.openid
-                   })
-                   that.judge(that.openid);
-                   //将openid作为主键存储到数据库中，再加上用户姓名和性别作为用户基本信息
-              },
-              fail: function(error) {
-                  console.info("获取用户openId失败");
-                  console.info(error);
-              }
-          })
-        }
-        },
-        fail(e) {
-          console.log('fail', e);
-          wx.showToast({
-            title: '网络异常',
-            duration: 2000
-          })
-          return;
-        }
-      })
+      this.judge(app.globalData.openid);
       setTimeout(this.handlerLogin,5000);
   },
   judge:function(appid)

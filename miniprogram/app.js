@@ -27,6 +27,21 @@ App({
         env:'cloud1-6gnuhn9p12e5fa11'  //云开发环境id
       })
     }
+    this.getOpenid();   //获取openid
+  },
+  getOpenid()
+  {
+     let that=this;
+     wx.cloud.callFunction({
+       name:'user',
+       data:{
+       type:'get_openid',
+       },
+       success:function(res){
+        that.openid=res.result.openid;
+        console.log(res.result.openid);
+       }
+     })
   },
   getDeviceInfo() {  //获取手机屏幕尺寸信息
     try {
