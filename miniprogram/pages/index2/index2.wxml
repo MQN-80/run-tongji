@@ -1,4 +1,13 @@
 <!--pages/index2/index2.wxml-->
-<text>跑姿指导</text>
-<button bindtap="ss">跑步姿势分析</button>
-<button bindtap="ss1">跑步成绩预测</button>
+<view class="frontpage">
+<text class="fronttext">跑步姿势纠正
+</text>
+<view class="imagepage">
+  <image src="../../images/run_page.jpeg" mode="widthFix"></image>
+</view>
+</view>
+<text class="tips1">正确的跑步姿势</text>
+<text class="tips2" style="position: relative; left: 70rpx; top: -385rpx">能够最大程度保护我们的</text>
+<text class="tips3" style="position: relative; left: 419rpx; top: -447rpx">膝踝关节</text>
+<van-button style="position: relative; left: 149rpx; top: -244rpx; width: 452rpx; height: 80rpx; display: block; box-sizing: border-box" bind:click="ss" round plain hairline type="primary">点击此处开始分析您的跑步姿势</van-button>
+<button bindtap="ss1" style="position: relative; left: 0rpx; top: 46rpx">跑步成绩预测</button>

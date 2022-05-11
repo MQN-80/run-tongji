@@ -1,1 +1,53 @@
 /* pages/index2/index2.wxss */
+.frontpage{
+    width: 100%;
+    height: 600rpx;
+    background:white;
+    border-radius:6px;
+}
+
+.fronttext{
+    position:relative;
+    font-size:30px;
+    left: 22rpx;
+    top: 70rpx;
+}
+
+.tips1{
+    position:relative;
+    left: 44rpx; 
+    top: -384rpx;
+    color:rgb(0, 0, 0);
+}
+
+.tips2{
+    position:relative;
+    left: 44rpx; 
+    top: -384rpx;
+    color:rgb(0, 0, 0);
+}
+
+.tips3{
+    position:relative;
+    left: 398rpx; 
+    top: -426rpx;
+    font-size:30px;
+    font-style:italic;
+    color:rgb(99, 88, 255);
+}
+
+.imagepage{
+    left: 22rpx; 
+    top: 116rpx;
+    position:relative;
+    width: 95%;
+    height: 439rpx;
+    display: flex;
+    background:linear-gradient(to right, #4bb0ff, #6149f6);
+    border-radius:8px;
+}
+
+.imagepage image{
+    width:100%;
+    border-radius:8px;
+}
