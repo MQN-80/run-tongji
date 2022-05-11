@@ -2,6 +2,7 @@
 const cloud = require('wx-server-sdk');
 const basicId = require('./basicID/basic.js');
 const predict=require('./score_predict/predict.js');
+const body=require('./body_data/body.js')
 // 云函数入口函数
 exports.main = async (event, context) => {
     switch (event.type) {
@@ -23,5 +24,8 @@ exports.main = async (event, context) => {
       case'predict':
         return await predict.main(event,context);
         break;
+      case'bodydata':
+      return await body.main(event,context);
+      break;
     }
 }
