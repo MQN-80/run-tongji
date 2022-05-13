@@ -1,13 +1,19 @@
 <!--pages/index2/index2.wxml-->
+<van-notice-bar color="#1989fa" background="white" scrollable mode="closeable" text="正确的跑步姿势能够最大程度保护我们的膝踝关节" />
 <view class="frontpage">
-<text class="fronttext">跑步姿势纠正
-</text>
-<view class="imagepage">
-  <image src="../../images/run_page.jpeg" mode="widthFix"></image>
+  <van-divider
+  contentPosition="center"
+  customStyle="color: black; background:white; border-color: black; font-size: 30px;">跑步姿势纠正</van-divider>
+  <view class="imagepage" style="position: relative; left: 18rpx; top: -10rpx">
+    <image src="../../images/run_page.jpeg" mode="widthFix" style="width: 712rpx; height: 372rpx; display: block; box-sizing: border-box"></image>
+  </view>
 </view>
+<van-button style="position: relative; left: 149rpx; top: -132rpx; width: 452rpx; height: 80rpx; display: block; box-sizing: border-box" bind:click="ss" round hairline type="info">点击此处开始分析您的跑步姿势</van-button>
+<view class="frontpage" style="position: relative; left: 0rpx; top: -80rpx">
+  <van-divider
+  contentPosition="center"
+  customStyle="color: black; background:white; border-color: black; font-size: 30px;">预测跑步成绩</van-divider>
+  <image src="https://636c-cloud1-6gnuhn9p12e5fa11-1310569801.tcb.qcloud.la/%E8%B4%B4%E5%9B%BE/run_score.jpeg?sign=0a7f15daa29c6bef100c9902d1ab1551&t=1652446691" mode="widthFix" style="position: relative; width: 712rpx; height: 372rpx; display: block; box-sizing: border-box; left: 19rpx; top: 15rpx; border-radius:8px;"></image>
+  <van-button style="position: relative; left: 149rpx; top: 42rpx; width: 452rpx; height: 80rpx; display: block; box-sizing: border-box" bind:click="ss1" round hairline type="info">点击此处开始预测您的跑步成绩</van-button>
 </view>
-<text class="tips1">正确的跑步姿势</text>
-<text class="tips2" style="position: relative; left: 70rpx; top: -385rpx">能够最大程度保护我们的</text>
-<text class="tips3" style="position: relative; left: 419rpx; top: -447rpx">膝踝关节</text>
-<van-button style="position: relative; left: 149rpx; top: -244rpx; width: 452rpx; height: 80rpx; display: block; box-sizing: border-box" bind:click="ss" round plain hairline type="primary">点击此处开始分析您的跑步姿势</van-button>
-<button bindtap="ss1" style="position: relative; left: 0rpx; top: 46rpx">跑步成绩预测</button>
+ 

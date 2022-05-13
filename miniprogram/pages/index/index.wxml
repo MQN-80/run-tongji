@@ -29,7 +29,9 @@ show="{{ show }}"
 bind:close="onClose"
 title="您确定要停止跑步吗？">
   <view style="display: flex; justify-content: center;margin: 0 auto;">请按住下方按钮结束跑步</view>
-  <view style="display: flex; justify-content: center;margin: 0 auto;">（在按下按钮的过程中，时间并不会停止）</view>
   <van-circle style="position: relative; left: 275rpx; top: 0rpx; width: 200rpx; height: 200rpx; display: block; box-sizing: border-box" size="100" layer-color="lightgray" color="{{gradientColor}}" speed="{{speed}}" stroke-width="8" bindtouchstart="countInterval" bindtouchend="countEND" value="{{count}}" text="中止跑步" />
+  <van-divider
+  contentPosition="center"
+  customStyle="color: #1989fa; border-color: #1989fa; font-size: 18px;">（在按下按钮的过程中，时间并不会停止）</van-divider>
 </van-action-sheet>
 <van-notify id="van-notify" />
