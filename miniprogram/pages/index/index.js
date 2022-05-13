@@ -8,6 +8,7 @@ var point = [];
 var that2;
 var pause=true;
 var qqmapsdk;
+var app=getApp();
 import Notify from "../../miniprogram_npm/@vant/weapp/notify/notify";
 
 /* 毫秒级倒计时 */
@@ -22,7 +23,7 @@ function count_down(that) {
       that.updateTime(time);
     }
  
-      if (countTooGetLocation >= 1000) { //1000为1s,每间隔一会儿画一条线
+      if (countTooGetLocation >= 200) { //1000为1s,每间隔一会儿画一条线
         that.getLocation();
         countTooGetLocation = 0;
         /*************** */
@@ -32,7 +33,7 @@ function count_down(that) {
         drawline();
       }   
  
- setTimeout
+
       setTimeout(function(){
         countTooGetLocation += 10;
     total_micro_second += 10;
@@ -111,12 +112,33 @@ Page({
     countTimer:null,
     show: false,
     show1:false,
+    total_distance:0,
     gradientColor: {
         '0%': 'violet',
         '100%': 'blue',
       },
   },
-
+  onShow: function () {
+  this.get_total();
+  },
+  /*获取总跑步数据
+  */
+  get_total(){
+  let that=this;
+  wx.cloud.callFunction({
+  name:'user',
+  data:{
+  type:'get_total',
+  openid:app.globalData.openid,
+  },
+  success:function(res){
+  console.log(res);
+ that.setData({
+ total_distance:res.result.data[0].total_distance,
+ })
+  }
+  })
+  },
   showPopup() {
     this.setData({ show: true });
   },

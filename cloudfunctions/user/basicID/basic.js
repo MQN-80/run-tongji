@@ -26,6 +26,10 @@ exports.main= async(event,context)=>{
         return get_runRecord(event)
       }
       break;
+      case'get_total':{
+        return get_total(event)
+      }
+      break;
       }
 
      
@@ -133,4 +137,12 @@ async function get_runRecord(event)
       errMsg: acc.errMsg,
     }
   })
+}
+/*获取跑步总数据
+*/
+ function get_total(event){
+return db.collection('total_run').where({
+  openid:event.openid,
+})
+.get()
 }
