@@ -1,6 +1,6 @@
 <view class="head">
   <view>累计跑步距离 ></view>
-  <view class="distance">0.00公里</view>
+  <view class="distance">{{ total_distance }}km</view>
   <van-collapse value="{{ activeNames }}" bind:change="onChange">
     <van-collapse-item name="1">
       <view slot="title">打开地图<van-icon name="question-o" /></view>
