@@ -27,5 +27,8 @@ exports.main = async (event, context) => {
       case'bodydata':
       return await body.main(event,context);
       break;
+      case'get_total':
+      return await basicId.main(event,context);
+      break;
     }
 }

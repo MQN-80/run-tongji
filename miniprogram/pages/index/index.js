@@ -8,6 +8,7 @@ var point = [];
 var that2;
 var pause=true;
 var qqmapsdk;
+var app=getApp();
 import Notify from "../../miniprogram_npm/@vant/weapp/notify/notify";
 
 /* 毫秒级倒计时 */
@@ -111,12 +112,33 @@ Page({
     countTimer:null,
     show: false,
     show1:false,
+    total_distance:0,
     gradientColor: {
         '0%': 'violet',
         '100%': 'blue',
       },
   },
-
+  onShow: function () {
+  this.get_total();
+  },
+  /*获取总跑步数据
+  */
+  get_total(){
+  let that=this;
+  wx.cloud.callFunction({
+  name:'user',
+  data:{
+  type:'get_total',
+  openid:app.globalData.openid,
+  },
+  success:function(res){
+  console.log(res);
+ that.setData({
+ total_distance:res.result.data[0].total_distance,
+ })
+  }
+  })
+  },
   showPopup() {
     this.setData({ show: true });
   },
