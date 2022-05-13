@@ -1,39 +1,9 @@
 /* pages/index2/index2.wxss */
 .frontpage{
     width: 100%;
-    height: 600rpx;
+    height: 700rpx;
     background:white;
     border-radius:6px;
-}
-
-.fronttext{
-    position:relative;
-    font-size:30px;
-    left: 22rpx;
-    top: 70rpx;
-}
-
-.tips1{
-    position:relative;
-    left: 44rpx; 
-    top: -384rpx;
-    color:rgb(0, 0, 0);
-}
-
-.tips2{
-    position:relative;
-    left: 44rpx; 
-    top: -384rpx;
-    color:rgb(0, 0, 0);
-}
-
-.tips3{
-    position:relative;
-    left: 398rpx; 
-    top: -426rpx;
-    font-size:30px;
-    font-style:italic;
-    color:rgb(99, 88, 255);
 }
 
 .imagepage{
