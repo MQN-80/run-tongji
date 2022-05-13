@@ -23,7 +23,7 @@ function count_down(that) {
       that.updateTime(time);
     }
  
-      if (countTooGetLocation >= 1000) { //1000为1s,每间隔一会儿画一条线
+      if (countTooGetLocation >= 200) { //1000为1s,每间隔一会儿画一条线
         that.getLocation();
         countTooGetLocation = 0;
         /*************** */
@@ -33,7 +33,7 @@ function count_down(that) {
         drawline();
       }   
  
- setTimeout
+
       setTimeout(function(){
         countTooGetLocation += 10;
     total_micro_second += 10;
