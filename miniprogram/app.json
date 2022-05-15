@@ -17,10 +17,10 @@
         "van-transition": "./miniprogram_npm/@vant/weapp/transition/index",
         "van-notify": "./miniprogram_npm/@vant/weapp/notify/index",
         "van-notice-bar": "@vant/weapp/notice-bar/index"
-      },
+    },
     "pages": [
-        "pages/index2/index2",
         "pages/login/login",
+        "pages/index2/index2",
         "pages/index/index",
         "pages/home/home",
         "pages/userinfo/userinfo",
