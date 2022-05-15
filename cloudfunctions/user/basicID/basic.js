@@ -47,7 +47,8 @@ async function add(event){
       // data 字段表示需新增的 JSON 数据
       data: {
         openid: event.openid,
-        nickname:event.nickname
+        nickname:event.nickname,
+        club_join:false,   //未参加过社团
       }
     }); 
     return {

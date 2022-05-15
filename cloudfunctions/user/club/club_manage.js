@@ -4,7 +4,15 @@ const db = cloud.database();
 exports.main=async(event,context)=>{
     switch(event.option){
     case'create_club':
-    return create_club(event);
+    {
+        return create_club(event);
+    }
+    break;
+    case'find_club':
+    {
+        return find_club(event);
+    }
+    break;
     }
 }
 /*创建社团，包括社团号club_number,为社团的唯一标识；以及社团名称club_name,初始化创建人为社团团长club_master
@@ -39,6 +47,15 @@ function create(event){
         member_id:[event.openid],
         }
     })
+}
+/**
+ * 查找该社团是否存在
+ */
+function find_club(event){
+return db.collection('run_club').where({
+    club_name:event.club_name,
+})
+.get()
 }
 /**
  * 新增成员

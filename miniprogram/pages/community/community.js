@@ -27,6 +27,14 @@ Page({
     })
     },
     /**
+     * 加入跑团,找不到跑团提示未找到；找到后要经过跑团团长同意才可
+     */
+    join_club(){
+    wx.navigateTo({
+      url: '../community_find/community_find',
+    })
+    },
+    /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
