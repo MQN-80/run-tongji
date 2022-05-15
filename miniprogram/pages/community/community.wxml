@@ -1,3 +1,4 @@
 <!--pages/community/community.wxml-->
 <text>pages/community/community.wxml</text>
 <button bindtap="create_club">创建跑团</button>
+<button bindtap="join_club">加入跑团</button>

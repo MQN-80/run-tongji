@@ -16,9 +16,14 @@
         "van-action-sheet": "./miniprogram_npm/@vant/weapp/action-sheet/index",
         "van-transition": "./miniprogram_npm/@vant/weapp/transition/index",
         "van-notify": "./miniprogram_npm/@vant/weapp/notify/index",
-        "van-notice-bar": "@vant/weapp/notice-bar/index"
+        "van-notice-bar": "@vant/weapp/notice-bar/index",
+        "van-field": "@vant/weapp/field/index",
+        "van-search": "@vant/weapp/search/index",
+        "van-dialog": "@vant/weapp/dialog/index"
+          
     },
     "pages": [
+        "pages/community_find/community_find",
         "pages/login/login",
         "pages/index2/index2",
         "pages/index/index",

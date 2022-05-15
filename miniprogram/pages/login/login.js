@@ -26,7 +26,7 @@ Page({
             success(info) {
               //把获取到的信息复制到data中的loginInfo中
               that.data.loginInfo = Object.assign( that.data.loginInfo, info );
-              that.nickname=info.userInfo.nickName;
+              //that.nickname=info.userInfo.nickName;
               app.globalData.avatorUrl=info.userInfo.avatarUrl;
               app.globalData.nickname=info.userInfo.nickName;
               that.setData({

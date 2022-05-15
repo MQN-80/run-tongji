@@ -37,7 +37,12 @@
         "useCompilerPlugins": false,
         "ignoreUploadUnusedFiles": true,
         "packNpmManually": false,
-        "packNpmRelationList": [],
+        "packNpmRelationList": [
+           { 
+               "packageJsonPath": "./miniprogram/package",
+               "miniprogramNpmDistDir": "./miniprogram/"
+           }
+        ],
         "useStaticServer": true
     },
     "appid": "wxe9a9c73f636ac70a",
