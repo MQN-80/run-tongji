@@ -35,6 +35,7 @@ Page({
               wx.switchTab({
                 url:"../home/home",
               })
+              that.judge(app.globalData.openid)
               //在此可以使用云数据库进行存储用户信息
               //调用后台的接口，把所有整合的个人信息传过去
              // that.handlerLogin( that.data.loginInfo );
@@ -43,10 +44,10 @@ Page({
               console.log('获取用户信息失败', e);
             }
           })
-      setTimeout(this.handlerLogin,1000);
   },
   judge:function(appid)
   {
+    console.log(appid);
     let that=this;
       wx.cloud.callFunction({
           // 云函数名称
@@ -58,29 +59,27 @@ Page({
           },
           success: function(res) {
             console.log(res.result.data.length);
-            that.flag=res.result.data.length;
-            that.setData({
-                flag:res.result.data.length,
-            })
+            if(res.result.data.length==0)
+            that.handlerLogin();
           },
           fail: console.error
         })
   },
 //调用后台的接口，传递信息
-  async handlerLogin() {
+   handlerLogin:function() {
   console.log(this.flag);
   if(!this.flag)
   {
-  console.log("ss");
   console.log(this.nickname);
+  let that=this;
   wx.cloud.callFunction({
     // 云函数名称
     name: 'user',
     // 传给云函数的参数
     data: {
       type:'basicId',
-      nickname:this.nickname,
-      openid:this.openid,
+      nickname:that.nickname,
+      openid:app.globalData.openid,
     },
     success: function(res) {
       console.log("用户基本信息已上传")
@@ -93,21 +92,20 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-      this.judge(app.globalData.openid);  //查看用户是否已经登录过
+    onLoad: function () {
+      
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+    
     },
 
     /**
