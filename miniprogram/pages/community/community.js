@@ -1,23 +1,84 @@
 // pages/community/community.js
-Component({
-    /**
-     * 组件的属性列表
-     */
-    properties: {
-
-    },
+var app=getApp();
+Page({
 
     /**
-     * 组件的初始数据
+     * 页面的初始数据
      */
     data: {
 
     },
+    /**
+     * 创建新社团
+     */
+    create_club(){
+    wx.cloud.callFunction({
+    name:'user',
+    data:{
+        type:'club',
+        option:'create_club',
+        club_name:'同济跑男',
+        openid:app.globalData.openid,
+        text:'欢迎大家一起加入',
+    },
+    success(res){
+        console.log(res);
+    }   
+    })
+    },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+
+    },
 
     /**
-     * 组件的方法列表
+     * 生命周期函数--监听页面初次渲染完成
      */
-    methods: {
+    onReady: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面隐藏
+     */
+    onHide: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面卸载
+     */
+    onUnload: function () {
+
+    },
+
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function () {
+
+    },
+
+    /**
+     * 页面上拉触底事件的处理函数
+     */
+    onReachBottom: function () {
+
+    },
+
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage: function () {
 
     }
 })
