@@ -1,5 +1,5 @@
 {
-    "miniprogramRoot": "miniprogram/",
+    "miniprogramRoot": "./miniprogram",
     "cloudfunctionRoot": "cloudfunctions/",
     "setting": {
         "urlCheck": false,
@@ -40,7 +40,7 @@
         "packNpmRelationList": [
            { 
                "packageJsonPath": "./miniprogram/package",
-               "miniprogramNpmDistDir": "./miniprogram/"
+               "miniprogramNpmDistDir": "./"
            }
         ],
         "useStaticServer": true
