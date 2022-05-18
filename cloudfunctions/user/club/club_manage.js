@@ -1,6 +1,11 @@
 const cloud = require('wx-server-sdk');
 cloud.init();
 const db = cloud.database();
+const op=db.command;
+/**
+ * 社团状态：0代表尚未处理，也就是未发出加入社团请求 ;1代表正在请求加入社团，但还未同意
+ * 2代表已经是社团的正式成员;  3代表为某跑团的团长
+ */
 exports.main=async(event,context)=>{
     switch(event.option){
     case'create_club':
@@ -11,6 +16,14 @@ exports.main=async(event,context)=>{
     case'find_club':
     {
         return find_club(event);
+    }
+    break;
+    case'add_member':{
+        return add_member(event);
+    }
+    break;
+    case'get_message':{
+        return send_message(event);
     }
     break;
     }
@@ -27,6 +40,14 @@ let result2=await db.collection('run_club').where({
     commander_id:event.openid,  //一个人只能创建一个跑团
 })
 .get()
+db.collection('user').where({
+    openid:event.openid,
+})
+.update({
+    data:{
+        club_join:3,    //表示该人员为团长
+    }
+})
 let flag=0;
 if(result1.data.length==0)
    create(event);  //当前名称未被使用，可以创建
@@ -45,6 +66,16 @@ function create(event){
         commander_id:event.openid,
         club_introduction:event.text,
         member_id:[event.openid],
+        waiting_queue:[],  //增加消息队列，用于团长确认加入跑团
+        }
+    })
+    /**更新用户社团状态，3代表团长 */
+    db.collection('user').where({
+        openid:event.openid,
+    })
+    .update({
+        data:{
+            club_join:3,    
         }
     })
 }
@@ -58,5 +89,56 @@ return db.collection('run_club').where({
 .get()
 }
 /**
- * 新增成员
+ * 新增成员到等待队列内,后续等待团员确认
  */
+function add_member(event){
+    db.collection('user').where({
+        openid:event.openid,
+        club_join:1,   //表示还未加入社团
+    })
+   .get()
+   .then(function(res){
+       if(res.data.length!=0)
+       add_member1(event);
+   })
+}
+function add_member1(event){
+    var today=new Date().toDateString();
+    console.log(today);
+    db.collection('run_club').where({
+        club_name:event.club_name,
+    })
+    .update({
+    data:{
+       waiting_queue:op.push({'name':event.nickname,'time':today,'openid':event.openid}),
+    }
+    })
+    /** */
+    db.collection('user').where({
+        openid:event.openid,
+    })
+    .update({
+    data:{
+    club_join:1,    //表示该用户处于处理状态，暂不能加入其他社团
+    }
+    })
+    /**  加入消息队列*/
+    
+}
+/**
+ * 将等待队列中的事件传送给跑团团长，等待团长处理
+ */
+ function send_message(event){
+    return new Promise((resolve,reject)=>{
+        db.collection('run_club').where({
+            commander_id:event.openid,
+        })
+        .get()
+        .then(function(res){
+            console.log(res);
+            const result=res.data[0].waiting_queue;
+            resolve(result);
+        })
+    })
+    
+}

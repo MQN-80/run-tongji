@@ -1,4 +1,6 @@
 <!--pages/community/community.wxml-->
-<text>pages/community/community.wxml</text>
-<button bindtap="create_club">创建跑团</button>
-<button bindtap="join_club">加入跑团</button>
+<van-icon style="position: relative; left: 291rpx; top: 10rpx" 
+name="https://636c-cloud1-6gnuhn9p12e5fa11-1310569801.tcb.qcloud.la/%E8%B4%B4%E5%9B%BE/%E6%B6%88%E6%81%AF.png?sign=cdb051f835c74d5d74e25ae055a6803f&t=1652799472" size="30px" dot="true" bindtap="get_message"/>
+<button bindtap="create_club" style="position: relative; left: 0rpx; top: 354rpx">创建跑团</button>
+<button bindtap="join_club" style="position: relative; left: 0rpx; top: 387rpx">加入跑团</button>
+<button bindtap=""></button>

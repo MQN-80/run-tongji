@@ -1,14 +1,15 @@
 // pages/commun_find/community_find.js
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
+var app=getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-    value:'1',
+    value:'',
     flag:false,
-    club_name:'1',
+    club_name:'',
     },
     /**
      * 查找输入的社团是否存在
@@ -34,7 +35,7 @@ Page({
             flag:true,
             club_name:res.result.data[0].club_name,
         })
-        that.show_dialog();  //显示消息框            
+        that.show_dialog(res);  //显示消息框            
     },
     fail:function(err){
         console.log(err);
@@ -51,7 +52,7 @@ Page({
 
     },
     //显示弹出框
-    show_dialog(){
+    show_dialog(res){
     let that=this;
     if(that.data.flag==true)
     {
@@ -60,10 +61,10 @@ Page({
             message:'是否加入该社团'
         })
         .then(function(){
-            console.log("dsa");
+            that.send_request(res);
         })
         .catch(function(){
-            console.log("da");
+            console.log("s");
         })
     }
     else{
@@ -74,6 +75,29 @@ Page({
             console.log("cancel");
         })
     }
+    },
+    /**
+     * 发送请求事件到云数据库集合中，等待确认
+     */
+    send_request:function(res){
+    wx.cloud.callFunction({
+    name:'user',
+    data:{
+        type:'club',
+        option:'add_member',
+        club_name:res.result.data[0].club_name,
+        openid:app.globalData.openid,
+        nickname:app.globalData.nickname,
+    },
+    success:function(res){
+        Dialog.alert({
+            message:'发送成功',
+        })
+    },
+    fail:function(res){
+        console.log(res);
+    }
+    })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
