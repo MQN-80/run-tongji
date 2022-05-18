@@ -4,7 +4,7 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {}, _tempexport
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = __MODS__[modId].m; m._exports = m._tempexports; var desp = Object.getOwnPropertyDescriptor(m, "exports"); if (desp && desp.configurable) Object.defineProperty(m, "exports", { set: function (val) { if(typeof val === "object" && val !== m._exports) { m._exports.__proto__ = val.__proto__; Object.keys(val).forEach(function (k) { m._exports[k] = val[k]; }); } m._tempexports = val }, get: function () { return m._tempexports; } }); __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1652597720978, function(require, module, exports) {
+__DEFINE__(1652799269193, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var mobilenet_1 = require("./mobilenet");
@@ -30,8 +30,8 @@ exports.scalePose = util_1.scalePose;
 var version_1 = require("./version");
 exports.version = version_1.version;
 //# sourceMappingURL=index.js.map
-}, function(modId) {var map = {"./mobilenet":1652597720979,"./multi_pose/decode_multiple_poses":1652597720981,"./single_pose/decode_single_pose":1652597720987,"./keypoints":1652597720985,"./posenet_model":1652597720990,"./util":1652597720993,"./version":1652597720994}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720979, function(require, module, exports) {
+}, function(modId) {var map = {"./mobilenet":1652799269194,"./multi_pose/decode_multiple_poses":1652799269196,"./single_pose/decode_single_pose":1652799269202,"./keypoints":1652799269200,"./posenet_model":1652799269205,"./util":1652799269208,"./version":1652799269209}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1652799269194, function(require, module, exports) {
 
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -65,8 +65,8 @@ var MobileNet = (function (_super) {
 }(base_model_1.BaseModel));
 exports.MobileNet = MobileNet;
 //# sourceMappingURL=mobilenet.js.map
-}, function(modId) { var map = {"./base_model":1652597720980}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720980, function(require, module, exports) {
+}, function(modId) { var map = {"./base_model":1652799269195}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1652799269195, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var tf = require("@tensorflow/tfjs-core");
@@ -102,7 +102,7 @@ var BaseModel = (function () {
 exports.BaseModel = BaseModel;
 //# sourceMappingURL=base_model.js.map
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720981, function(require, module, exports) {
+__DEFINE__(1652799269196, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var build_part_with_score_queue_1 = require("./build_part_with_score_queue");
@@ -148,8 +148,8 @@ function decodeMultiplePoses(scoresBuffer, offsetsBuffer, displacementsFwdBuffer
 }
 exports.decodeMultiplePoses = decodeMultiplePoses;
 //# sourceMappingURL=decode_multiple_poses.js.map
-}, function(modId) { var map = {"./build_part_with_score_queue":1652597720982,"./decode_pose":1652597720984,"./util":1652597720986}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720982, function(require, module, exports) {
+}, function(modId) { var map = {"./build_part_with_score_queue":1652799269197,"./decode_pose":1652799269199,"./util":1652799269201}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1652799269197, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var max_heap_1 = require("./max_heap");
@@ -196,8 +196,8 @@ function buildPartWithScoreQueue(scoreThreshold, localMaximumRadius, scores) {
 }
 exports.buildPartWithScoreQueue = buildPartWithScoreQueue;
 //# sourceMappingURL=build_part_with_score_queue.js.map
-}, function(modId) { var map = {"./max_heap":1652597720983}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720983, function(require, module, exports) {
+}, function(modId) { var map = {"./max_heap":1652799269198}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1652799269198, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 function half(k) {
@@ -267,7 +267,7 @@ var MaxHeap = (function () {
 exports.MaxHeap = MaxHeap;
 //# sourceMappingURL=max_heap.js.map
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720984, function(require, module, exports) {
+__DEFINE__(1652799269199, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var keypoints_1 = require("../keypoints");
@@ -348,8 +348,8 @@ function decodePose(root, scores, offsets, outputStride, displacementsFwd, displ
 }
 exports.decodePose = decodePose;
 //# sourceMappingURL=decode_pose.js.map
-}, function(modId) { var map = {"../keypoints":1652597720985,"./util":1652597720986}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720985, function(require, module, exports) {
+}, function(modId) { var map = {"../keypoints":1652799269200,"./util":1652799269201}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1652799269200, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.partNames = [
@@ -412,7 +412,7 @@ exports.partChannels = [
 ];
 //# sourceMappingURL=keypoints.js.map
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720986, function(require, module, exports) {
+__DEFINE__(1652799269201, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var keypoints_1 = require("../keypoints");
@@ -465,8 +465,8 @@ function clampVector(a, min, max) {
 }
 exports.clampVector = clampVector;
 //# sourceMappingURL=util.js.map
-}, function(modId) { var map = {"../keypoints":1652597720985}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720987, function(require, module, exports) {
+}, function(modId) { var map = {"../keypoints":1652799269200}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1652799269202, function(require, module, exports) {
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -546,8 +546,8 @@ function decodeSinglePose(heatmapScores, offsets, outputStride) {
 }
 exports.decodeSinglePose = decodeSinglePose;
 //# sourceMappingURL=decode_single_pose.js.map
-}, function(modId) { var map = {"../keypoints":1652597720985,"./argmax2d":1652597720988,"./util":1652597720989}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720988, function(require, module, exports) {
+}, function(modId) { var map = {"../keypoints":1652799269200,"./argmax2d":1652799269203,"./util":1652799269204}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1652799269203, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var tf = require("@tensorflow/tfjs-core");
@@ -570,7 +570,7 @@ function argmax2d(inputs) {
 exports.argmax2d = argmax2d;
 //# sourceMappingURL=argmax2d.js.map
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720989, function(require, module, exports) {
+__DEFINE__(1652799269204, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var tf = require("@tensorflow/tfjs-core");
@@ -615,8 +615,8 @@ function getOffsetPoints(heatMapCoordsBuffer, outputStride, offsetsBuffer) {
 }
 exports.getOffsetPoints = getOffsetPoints;
 //# sourceMappingURL=util.js.map
-}, function(modId) { var map = {"../keypoints":1652597720985}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720990, function(require, module, exports) {
+}, function(modId) { var map = {"../keypoints":1652799269200}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1652799269205, function(require, module, exports) {
 
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
@@ -912,8 +912,8 @@ function load(config) {
 }
 exports.load = load;
 //# sourceMappingURL=posenet_model.js.map
-}, function(modId) { var map = {"./checkpoints":1652597720991,"./mobilenet":1652597720979,"./multi_pose/decode_multiple_poses":1652597720981,"./resnet":1652597720992,"./single_pose/decode_single_pose":1652597720987,"./util":1652597720993}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720991, function(require, module, exports) {
+}, function(modId) { var map = {"./checkpoints":1652799269206,"./mobilenet":1652799269194,"./multi_pose/decode_multiple_poses":1652799269196,"./resnet":1652799269207,"./single_pose/decode_single_pose":1652799269202,"./util":1652799269208}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1652799269206, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var MOBILENET_BASE_URL = 'https://storage.googleapis.com/tfjs-models/savedmodel/posenet/mobilenet/';
@@ -942,7 +942,7 @@ function mobileNetCheckpoint(stride, multiplier, quantBytes) {
 exports.mobileNetCheckpoint = mobileNetCheckpoint;
 //# sourceMappingURL=checkpoints.js.map
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720992, function(require, module, exports) {
+__DEFINE__(1652799269207, function(require, module, exports) {
 
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -976,8 +976,8 @@ var ResNet = (function (_super) {
 }(base_model_1.BaseModel));
 exports.ResNet = ResNet;
 //# sourceMappingURL=resnet.js.map
-}, function(modId) { var map = {"./base_model":1652597720980}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720993, function(require, module, exports) {
+}, function(modId) { var map = {"./base_model":1652799269195}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1652799269208, function(require, module, exports) {
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -1228,15 +1228,15 @@ function scaleAndFlipPoses(poses, _a, _b, padding, flipHorizontal) {
 }
 exports.scaleAndFlipPoses = scaleAndFlipPoses;
 //# sourceMappingURL=util.js.map
-}, function(modId) { var map = {"./keypoints":1652597720985}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1652597720994, function(require, module, exports) {
+}, function(modId) { var map = {"./keypoints":1652799269200}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1652799269209, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var version = '2.2.1';
 exports.version = version;
 //# sourceMappingURL=version.js.map
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1652597720978);
+return __REQUIRE__(1652799269193);
 })()
 //miniprogram-npm-outsideDeps=["@tensorflow/tfjs-core","@tensorflow/tfjs-converter"]
 //# sourceMappingURL=index.js.map

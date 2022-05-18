@@ -1,1 +1,11 @@
 /* pages/community/community.wxss */
+.icon--home{
+  size:1000px;
+  position: relative;
+  width: 200rpx;
+  height: 100rpx;
+
+}
+.van-icon--primary{
+    position: relative;
+}

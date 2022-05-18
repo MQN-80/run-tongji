@@ -1,4 +1,4 @@
-// pages/community/community.js
+// pages/club_message/club_message.js
 var app=getApp();
 Page({
 
@@ -6,47 +6,28 @@ Page({
      * 页面的初始数据
      */
     data: {
-    message_number:0   //用户未读消息
+
     },
-    /**
-     * 创建新社团
-     */
-    create_club(){
-    wx.cloud.callFunction({
-    name:'user',
-    data:{
-        type:'club',
-        option:'create_club',
-        club_name:'同济跑男',
-        openid:app.globalData.openid,
-        text:'欢迎大家一起加入',
-    },
-    success(res){
-        console.log(res);
-    }   
-    })
-    },
-    /**
-     * 加入跑团,找不到跑团提示未找到；找到后要经过跑团团长同意才可
-     */
-    join_club(){
-    wx.navigateTo({
-      url: '../community_find/community_find',
-    })
-    },
-    get_message(){
-    wx.navigateTo({
-      url: '../club_message/club_message',
-    })
-    },
-    
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+    this.get_message();
     },
-
+    get_message:function(){
+        wx.cloud.callFunction({
+            name:'user',
+            data:{
+                type:'club',
+                option:'get_message',
+                openid:app.globalData.openid
+            },
+            success:function(res){
+                console.log(res);
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

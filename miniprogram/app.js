@@ -39,6 +39,7 @@ App({
        },
        success:function(res){
         that.globalData.openid=res.result.openid;
+        that.globalData.is_join=res.result.club_join;
        }
      })
   },
@@ -58,6 +59,7 @@ App({
   globalData:{
     nickname:'ss1',
     openid:'', //用户openid为用户唯一标识
+    is_join:0,
     avatorUrl:'s', //用户头像url地址
     appWidth: 320,
     appHeight: 500,
