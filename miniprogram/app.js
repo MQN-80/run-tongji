@@ -38,8 +38,9 @@ App({
        type:'get_openid',
        },
        success:function(res){
-        that.globalData.openid=res.result.openid;
-        that.globalData.is_join=res.result.club_join;
+
+        that.globalData.openid=res.result.data[0].openid;
+        that.globalData.is_join=res.result.data[0].club_join;
        }
      })
   },

@@ -25,6 +25,9 @@ exports.main = async (event, context) => {
       case'predict':
         return await predict.main(event,context);
         break;
+      case'get_info':
+       return basicId.main(event,context);
+       break; 
       case'bodydata':
       return await body.main(event,context);
       break;

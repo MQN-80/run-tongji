@@ -1,2 +1,14 @@
-<!--pages/club_message/club_message.wxml-->
-<text>pages/club_message/club_message.wxml</text>
+<button bindtap="update_page">更新页面</button>
+<text style="font-size:80rpx;">系统消息</text>
+<view wx:for="{{message0}}">
+<text>{{index}}:{{item.context}}\n</text>
+<text>时间:{{item.update_date}}</text>
+</view>
+<text style="font-size:80rpx;">社团消息</text>
+<view wx:for="{{message1}}">
+<text>{{index}}:{{item.nickname}}请求加入社团\n    </text>
+<text>时间：{{item.time}}</text>
+<button bindtap="club_agree" data-index="{{index}}" style="background-color: aqua;">确认</button>
+<button bindtap="club_disagree"  data-index="{{index}}" style="background-color: aqua;">拒绝</button>
+</view>
+<van-dialog id="van-dialog" />

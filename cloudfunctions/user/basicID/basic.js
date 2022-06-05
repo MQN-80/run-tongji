@@ -30,6 +30,9 @@ exports.main= async(event,context)=>{
         return get_total(event)
       }
       break;
+      case'get_info':{
+        return get_information(event);
+      }
       }
 
      
@@ -37,9 +40,11 @@ exports.main= async(event,context)=>{
 //返回用户user_id信息
 function user_information(){
   const wxContext=cloud.getWXContext();
-  return{
+ 
+  return db.collection('user').where({
     openid:wxContext.OPENID,
-  }
+  })
+  .get();
 }
 // 创建集合云函数入口函数
 async function add(event){
@@ -146,4 +151,26 @@ return db.collection('total_run').where({
   openid:event.openid,
 })
 .get()
+}
+/**
+ * 获取用户的所有待处理消息
+ */
+function get_information(event){
+  // 通知类信息
+  if(event.type1==1)
+ { 
+   return db.collection('user_information').where({
+    openid:event.openid,
+    type:1,
+  })
+  .get()
+}
+else if(event.type1==0)
+{
+  return db.collection('user_information').where({
+    openid:event.openid,
+    type:0,
+  })
+  .get()
+}
 }

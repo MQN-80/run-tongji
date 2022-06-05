@@ -35,7 +35,8 @@
         "pages/predict/predict",
         "pages/bodydata/bodydata",
         "pages/total_time/total_time",
-        "pages/club_message/club_message"
+        "pages/club_message/club_message",
+        "pages/create_club/create_club"
     ],
     "permission": {
         "scope.userLocation": {

@@ -22,8 +22,8 @@ exports.main=async(event,context)=>{
         return add_member(event);
     }
     break;
-    case'get_message':{
-        return send_message(event);
+    case'process_queue':{
+        return process_queue(event);
     }
     break;
     }
@@ -94,7 +94,7 @@ return db.collection('run_club').where({
 function add_member(event){
     db.collection('user').where({
         openid:event.openid,
-        club_join:1,   //表示还未加入社团
+        club_join:0,   //表示还未加入社团
     })
    .get()
    .then(function(res){
@@ -122,23 +122,59 @@ function add_member1(event){
     club_join:1,    //表示该用户处于处理状态，暂不能加入其他社团
     }
     })
+    console.log("ss11");
     /**  加入消息队列*/
-    
+    db.collection('run_club').where({
+        club_name:event.club_name,
+    })
+    .get()
+    .then(function(res){
+        console.log(res);
+        send_message(res.data[0].commander_id,event);
+    })
 }
 /**
  * 将等待队列中的事件传送给跑团团长，等待团长处理
  */
- function send_message(event){
-    return new Promise((resolve,reject)=>{
-        db.collection('run_club').where({
-            commander_id:event.openid,
-        })
-        .get()
-        .then(function(res){
-            console.log(res);
-            const result=res.data[0].waiting_queue;
-            resolve(result);
-        })
+ function send_message(user_id,event){
+    var today=new Date().toDateString();
+    console.log("ss")
+    db.collection('user_information').add({
+        data:{
+        openid:user_id,
+        waiting_id:event.openid,
+        nickname:event.nickname,
+        time:today,
+        type:1,  //表示该消息为社团消息
+        }
     })
-    
+}
+/**
+ * 该函数用于处理等待队列内的请求，同意或拒绝团员发出的请求
+ */
+function process_queue(event){
+db.collection('user_information').where({
+    openid:event.openid,
+    type:1,
+})
+.remove()
+db.collection('user').where({
+    openid:event.openid,
+})
+.update({
+    data:{
+        club_join:event.change_join,   //改变用户社团状态，根据输入决定
+    }
+})
+if(event.change_join==2)
+{
+    db.collection('run_club').where({
+        commander_id:event.commander_id,
+    })
+    .update({
+        data:{
+            member_id:op.push(event.openid),
+        }
+    })
+}
 }
