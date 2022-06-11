@@ -3,8 +3,8 @@ Page({
     data: {
         BMI:0,
         chest_length:0,
+        weight:0,
         height:0,
-        high:0,
         waistline:0
     },
     pushData:function(){
@@ -24,6 +24,9 @@ Page({
             console.log("上传成功");
         }
         })
+    },
+    onShow: function () {
+        this.getData();
     },
     getData:function(){
         var that=this;
@@ -48,5 +51,46 @@ Page({
         }
         }
     })
+    },
+
+    onChange_weight(event){
+        this.setData({
+            weight:event.detail
+        })
+    },
+    onChange_chest_length(event){
+        this.setData({
+            chest_length:event.detail
+        })
+    },
+    onChange_waistline(event){
+        this.setData({
+            waistline:event.detail
+        })
+    },
+    onChange_height(event){
+        this.setData({
+            height:event.detail
+        })
+    },
+    saveData:function(){
+        var that=this;
+        wx.cloud.callFunction({
+        name:'user',
+        data:{
+        type:"bodydata",
+        option:"push_bodydata",
+        openid:app.globalData.openid,
+        chest_length:this.data.chest_length,
+        weight:this.data.weight,
+        height:this.data.height,
+        waistline:this.data.waistline
+
+        },
+        success: function (res) {
+            console.log(res)
+           }
+    })
     }
+
 })

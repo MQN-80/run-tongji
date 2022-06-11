@@ -1,5 +1,5 @@
 {
-    "miniprogramRoot": "./miniprogram",
+    "miniprogramRoot": "miniprogram/",
     "cloudfunctionRoot": "cloudfunctions/",
     "setting": {
         "urlCheck": false,
@@ -38,10 +38,10 @@
         "ignoreUploadUnusedFiles": true,
         "packNpmManually": false,
         "packNpmRelationList": [
-           { 
-               "packageJsonPath": "./miniprogram/package",
-               "miniprogramNpmDistDir": "./"
-           }
+            {
+                "packageJsonPath": "./miniprogram/package",
+                "miniprogramNpmDistDir": "./"
+            }
         ],
         "useStaticServer": true
     },

@@ -24,6 +24,7 @@
     },
     "pages": [
         "pages/login/login",
+        "pages/bodydata/bodydata",
         "pages/community/community",
         "pages/community_find/community_find",
         "pages/index2/index2",
@@ -33,7 +34,6 @@
         "pages/poseDetect/poseDetect",
         "pages/resultShow/resultShow",
         "pages/predict/predict",
-        "pages/bodydata/bodydata",
         "pages/total_time/total_time",
         "pages/club_message/club_message",
         "pages/create_club/create_club"
