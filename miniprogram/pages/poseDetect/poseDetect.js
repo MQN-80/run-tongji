@@ -71,8 +71,14 @@ Page({
         }
         count = 0;
       }
+      if(pause==true)
+      {
+        listener.stop();
+      }
     });
     listener.start();
+    console.log("s")
+
   },
 
   initClassifier() {
@@ -92,6 +98,7 @@ Page({
   positionRecord(pose){ //记录各关节的位置，来判断跑步姿势
   //console.log(key_position)
   //<app-nav />
+  app.globalData.head.push([pose.keypoints[0].position.x,pose.keypoints[0].position.y])
   key_position.push([
     [pose.keypoints[5].position.x,pose.keypoints[5].position.y],
     [pose.keypoints[6].position.x,pose.keypoints[6].position.y],
@@ -155,7 +162,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+  pause=false;
   },
 
   /**

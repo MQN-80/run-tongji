@@ -67,5 +67,6 @@ App({
     benchmarkLevel: -1,
     key_position:'', //用三维数组存储关键点位置
     angle_num:'',
+    head:[],
   }
 });

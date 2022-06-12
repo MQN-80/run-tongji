@@ -25,6 +25,7 @@
     "van-dropdown-item": "@vant/weapp/dropdown-item/index"
   },
   "pages": [
+    
     "pages/login/login",
     "pages/bodydata/bodydata",
     "pages/community/community",

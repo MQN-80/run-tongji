@@ -1,7 +1,12 @@
-
-<canvas
- style="width: 300px; height: 600px; position: relative; left: 0rpx; top: 347rpx"
- canvas-id="yueEle"
- binderror="canvasIdErrorCallback"
-></canvas>
-<canvas canvas-id='curve-img' style='width:{{canvasWidth}}px;height:{{canvasHeight}}px;'></canvas>
+<van-dropdown-menu>
+  <van-dropdown-item bind:change="onChange" value="{{ value1 }}" options="{{ option1 }}" />
+</van-dropdown-menu>
+<canvas canvas-id='curve-img' style="width: 300px; height: 350px; position: relative; left: 0rpx; top: 100rpx"></canvas>
+<text style="font-size:80rpx;">跑姿成绩判定</text>
+<van-cell-group>
+  <van-cell title="头部稳定性 " value="{{headScore}}" />
+  <van-cell title="右臂摆臂得分" value="{{rightScore}}" />
+  <van-cell title="左臂摆臂得分" value="{{leftScore}}" />
+  <van-cell title="右腿折叠得分" value="{{right1Score}}" />
+  <van-cell title="左腿折叠得分" value="{{left1Score}}" />
+</van-cell-group>
