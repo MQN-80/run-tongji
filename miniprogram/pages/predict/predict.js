@@ -1,6 +1,10 @@
 const { time } = require("@tensorflow/tfjs-core")
-var app=getApp()
+var app=getApp();
 // pages/predict/predict.js
+var time1=0;
+var hour='0';   //小时
+var minute='0';//分钟
+var second='0'; //秒数
 Page({
 
     /**
@@ -9,20 +13,40 @@ Page({
     data: {
     select:false,
     distance:'1500m',
-    time:'387',
+    option1: [
+      { text: '1500m', value: 0 },
+      { text: '3k', value: 1 },
+      { text: '5k', value: 2 },
+      { text: '10k', value: 3 },
+      { text: '15k', value: 4 },
+      { text: 'HM', value: 5 },
+      { text: 'M', value: 6 },
+    ],
+    value1: 0,
+    hour:'0',   //小时
+    minute:'0',//分钟
+    second:'0', //秒数
     },
-    distance_input(e){
-    this.setData({
-        distance:e.detail.value,
-    })
+    onChange(e){
+      console.log(this.data.option1[e.detail].text);
+      this.setData({
+        distance:this.data.option1[e.detail].text
+      })
+     
     },
-    time_input(e){
-        this.setData({
-            time:e.detail.value,
-        })
+    input(e){
+     hour=e.detail;
     },
-    ss1(){  
-        console.log(parseInt(this.data.time));
+    input1(e){
+      minute=e.detail;
+    },
+    input2(e){
+      second=e.detail;
+    },
+        ss1(){  
+        
+        time1=parseInt(hour)*3600+parseInt(minute)*60+parseInt(second);
+        console.log(time1);
         let that=this;
         wx.cloud.callFunction({
             // 云函数名称
@@ -33,10 +57,18 @@ Page({
               openid:app.globalData.openid,
               option:1,
               distance:that.data.distance,
-              time:parseInt(that.data.time),
+              time:time1,
             },
             success: function(res) {
               console.log("上传成功")
+              var traingPace=JSON.stringify(res.result.training_pace);
+              var predicts=JSON.stringify(res.result.predict_score);
+              if(res.result.predict_score.length!=0)  //查询找数据，跳转
+              {
+                wx.redirectTo({
+                  url: '../score_show/score_show?predict_score='+predicts+'&training_pace='+traingPace,
+                })
+              }
               console.log(res);
             },
             fail: console.error

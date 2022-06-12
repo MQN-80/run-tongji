@@ -1,91 +1,94 @@
 {
-    "usingComponents": {
-        "van-button": "./miniprogram_npm/@vant/weapp/button/index",
-        "van-skeleton": "./miniprogram_npm/@vant/weapp/skeleton/index",
-        "van-card": "./miniprogram_npm/@vant/weapp/card/index",
-        "van-grid": "./miniprogram_npm/@vant/weapp/grid/index",
-        "van-grid-item": "./miniprogram_npm/@vant/weapp/grid-item/index",
-        "van-divider": "./miniprogram_npm/@vant/weapp/divider/index",
-        "van-cell": "./miniprogram_npm/@vant/weapp/cell/index",
-        "van-cell-group": "./miniprogram_npm/@vant/weapp/cell-group/index",
-        "van-collapse": "./miniprogram_npm/@vant/weapp/collapse/index",
-        "van-collapse-item": "./miniprogram_npm/@vant/weapp/collapse-item/index",
-        "van-circle": "./miniprogram_npm/@vant/weapp/circle/index",
-        "van-count-down": "./miniprogram_npm/@vant/weapp/count-down/index",
-        "van-popup": "./miniprogram_npm/@vant/weapp/popup/index",
-        "van-action-sheet": "./miniprogram_npm/@vant/weapp/action-sheet/index",
-        "van-transition": "./miniprogram_npm/@vant/weapp/transition/index",
-        "van-notify": "./miniprogram_npm/@vant/weapp/notify/index",
-        "van-notice-bar": "@vant/weapp/notice-bar/index",
-        "van-field": "@vant/weapp/field/index",
-        "van-search": "@vant/weapp/search/index",
-        "van-dialog": "@vant/weapp/dialog/index",
-        "van-icon": "@vant/weapp/icon/index"
-    },
-    "pages": [
-        "pages/login/login",
-        "pages/bodydata/bodydata",
-        "pages/community/community",
-        "pages/community_find/community_find",
-        "pages/index2/index2",
-        "pages/index/index",
-        "pages/home/home",
-        "pages/userinfo/userinfo",
-        "pages/poseDetect/poseDetect",
-        "pages/resultShow/resultShow",
-        "pages/predict/predict",
-        "pages/total_time/total_time",
-        "pages/club_message/club_message",
-        "pages/create_club/create_club"
-    ],
-    "permission": {
-        "scope.userLocation": {
-            "desc": "你的位置信息将用于小程序位置接口的效果展示"
-        }
-    },
-    "window": {
-        "backgroundColor": "#F6F6F6",
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#F6F6F6",
-        "navigationBarTitleText": "同心健步",
-        "navigationBarTextStyle": "black"
-    },
-    "sitemapLocation": "sitemap.json",
-    "plugins": {
-        "tfjsPlugin": {
-            "version": "0.2.0",
-            "provider": "wx6afed118d9e81df9"
-        }
-    },
-    "tabBar": {
-        "color": "#a9b7b7",
-        "selectedColor": "#11cd6e",
-        "borderStyle": "white",
-        "list": [
-            {
-                "selectedIconPath": "images/guidance_filled.png",
-                "iconPath": "images/guidance.png",
-                "pagePath": "pages/index2/index2",
-                "text": "指导"
-            },
-            {
-                "selectedIconPath": "images/community_filled.png",
-                "iconPath": "images/community.png",
-                "pagePath": "pages/community/community",
-                "text": "社区"
-            },
-            {
-                "selectedIconPath": "images/run_filled.png",
-                "iconPath": "images/run.png",
-                "pagePath": "pages/index/index",
-                "text": "跑步"
-            },
-            {
-                "selectedIconPath": "images/account_filled.png",
-                "iconPath": "images/account.png",
-                "pagePath": "pages/home/home",
-                "text": "数据"
-            }
-        ]
+  "usingComponents": {
+    "van-button": "./miniprogram_npm/@vant/weapp/button/index",
+    "van-skeleton": "./miniprogram_npm/@vant/weapp/skeleton/index",
+    "van-card": "./miniprogram_npm/@vant/weapp/card/index",
+    "van-grid": "./miniprogram_npm/@vant/weapp/grid/index",
+    "van-grid-item": "./miniprogram_npm/@vant/weapp/grid-item/index",
+    "van-divider": "./miniprogram_npm/@vant/weapp/divider/index",
+    "van-cell": "./miniprogram_npm/@vant/weapp/cell/index",
+    "van-cell-group": "./miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-collapse": "./miniprogram_npm/@vant/weapp/collapse/index",
+    "van-collapse-item": "./miniprogram_npm/@vant/weapp/collapse-item/index",
+    "van-circle": "./miniprogram_npm/@vant/weapp/circle/index",
+    "van-count-down": "./miniprogram_npm/@vant/weapp/count-down/index",
+    "van-popup": "./miniprogram_npm/@vant/weapp/popup/index",
+    "van-action-sheet": "./miniprogram_npm/@vant/weapp/action-sheet/index",
+    "van-transition": "./miniprogram_npm/@vant/weapp/transition/index",
+    "van-notify": "./miniprogram_npm/@vant/weapp/notify/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index"
+  },
+  "pages": [
+    "pages/login/login",
+    "pages/bodydata/bodydata",
+    "pages/community/community",
+    "pages/community_find/community_find",
+    "pages/index2/index2",
+    "pages/index/index",
+    "pages/home/home",
+    "pages/userinfo/userinfo",
+    "pages/poseDetect/poseDetect",
+    "pages/resultShow/resultShow",
+    "pages/predict/predict",
+    "pages/total_time/total_time",
+    "pages/club_message/club_message",
+    "pages/create_club/create_club",
+    "pages/score_show/score_show"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "同心健步",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "plugins": {
+    "tfjsPlugin": {
+      "version": "0.2.0",
+      "provider": "wx6afed118d9e81df9"
+    }
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/guidance_filled.png",
+        "iconPath": "images/guidance.png",
+        "pagePath": "pages/index2/index2",
+        "text": "指导"
+      },
+      {
+        "selectedIconPath": "images/community_filled.png",
+        "iconPath": "images/community.png",
+        "pagePath": "pages/community/community",
+        "text": "社区"
+      },
+      {
+        "selectedIconPath": "images/run_filled.png",
+        "iconPath": "images/run.png",
+        "pagePath": "pages/index/index",
+        "text": "跑步"
+      },
+      {
+        "selectedIconPath": "images/account_filled.png",
+        "iconPath": "images/account.png",
+        "pagePath": "pages/home/home",
+        "text": "数据"
+      }
+    ]
+  }
 }

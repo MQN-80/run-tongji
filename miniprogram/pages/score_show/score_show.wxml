@@ -1,0 +1,20 @@
+<!--pages/score_show/score_show.wxml-->
+<text style="font-size:80rpx;">各分段成绩预测</text>
+<van-cell-group>
+  <van-cell title="1.5km成绩" value="{{predicting_score[0]}}" />
+  <van-cell title="3km  成绩" value="{{predicting_score[1]}}" />
+  <van-cell title="5km  成绩" value="{{predicting_score[2]}}" />
+  <van-cell title="10km 成绩" value="{{predicting_score[3]}}" />
+  <van-cell title="15km成绩" value="{{predicting_score[4]}}" />
+  <van-cell title="半马  成绩" value="{{predicting_score[5]}}" />
+  <van-cell title="全马  成绩" value="{{predicting_score[6]}}" />
+</van-cell-group>
+<text style="font-size:80rpx;">配速区间推荐</text>
+<text>该配速区间给出了各种训练所需配速</text>
+<van-cell-group>
+  <van-cell title="轻松跑配速" value="{{training_pace.easy.min}}-{{training_pace.easy.max}}km/h" />
+  <van-cell title="间歇跑配速" value="400m-{{training_pace.interval_400}}km/h\n 1000m-{{training_pace.interval_1000}}km/h  \n "/>
+  <van-cell title="马拉松稳定跑" value="{{training_pace.marathon}}km/h" />
+  <van-cell title="快速跑训练" value="200m-{{training_pace.reps_200}}km/h \n 300m-{{training_pace.reps_300}}km/h\n 400m-{{training_pace.reps_400}}km/h\n 600m-{{training_pace.reps_600}}km/h\n 800m-{{training_pace.reps_800}}km/h " />
+  <van-cell title="阀值训练" value="400m-{{training_pace.threshold_400}}km/h \n 800m-{{training_pace.threshold_800}}km/h \n 1000m-{{training_pace.threshold_1000}}km/h " />
+</van-cell-group> 

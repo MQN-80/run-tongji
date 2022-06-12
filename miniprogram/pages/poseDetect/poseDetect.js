@@ -26,6 +26,9 @@ Page({
    */
   onLoad: function (options) {
     console.log('benchmarkLevel', benchmarkLevel);
+    app.globalData.angle_num=[];
+    app.globalData.key_position=[];
+    console.log("da1")
   },
   onCameraError(err) {
     console.log('onCameraError>>', err);

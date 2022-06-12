@@ -45,7 +45,7 @@ Page({
       num.push(angle[i][j]);
       console.log(num);
       console.log(sto);
-      var yuelineChart = new wxchart({ //当月用电折线图配置
+      var yuelineChart = new wxchart({ 
         canvasId: 'yueEle',
         type: 'line',
         categories: sto, //categories X轴

@@ -14,7 +14,9 @@ exports.main=async(event,context)=>{
      return predict_1(event);
 }
  function predict_1(event){
-     var i=30;
+     result=[];
+     console.log(event);
+     var i=31;
      var flag=1;
        for(;i<=85;i++)
        {
@@ -42,12 +44,13 @@ exports.main=async(event,context)=>{
               result.push((vdot.table[mid]["HM"]+vdot.table[mid1]["HM"])/2);
               result.push((vdot.table[mid]["M"]+vdot.table[mid1]["M"])/2);
               pace=vdot.table1[mid];
+              console.log(i);
               break;
            }
        }
-      if(i==0)
+      if(i==31)
       flag=0;  //表示配速太慢
-      if(i==85)   //表示成绩过高
+      if(i==86)   //表示成绩过高
       flag=2;
        console.log(result);
        return{

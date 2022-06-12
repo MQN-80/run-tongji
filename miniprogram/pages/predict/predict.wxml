@@ -1,5 +1,10 @@
 <!--pages/predict/predict.wxml-->
-<text>选择输入成绩的距离</text>
-<input type="text" bindinput="distance_input" placeholder="请输入距离" />
-<input type="text" bindinput="time_input" placeholder="请输入时间" />
+<text>选择跑步距离</text>
+<van-dropdown-menu>
+  <van-dropdown-item bind:change="onChange" value="{{ value1 }}" options="{{ option1 }}" />
+</van-dropdown-menu>
+<text>请输入跑步时长</text>
+<van-search bind:change="input"  placeholder="请输入小时" />
+<van-search bind:change="input1"  placeholder="请输入分钟" />
+<van-search bind:change="input2" placeholder="请输入秒数" />
 <button bindtap="ss1">获取跑力值</button>
