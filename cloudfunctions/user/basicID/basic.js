@@ -92,7 +92,6 @@ async function runRecord(event)
         step_number:event.step_number,
         stride:event.stride,
         time:event.time,
-        location:event.location, //经纬度数组，用于存放路径
       }
     })
     .then(res=>{

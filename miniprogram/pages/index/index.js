@@ -13,7 +13,7 @@ import Notify from "../../miniprogram_npm/@vant/weapp/notify/notify";
 
 /* 毫秒级倒计时 */
 function count_down(that) {
- 
+    
     if (starRun == 0) {
       return;
     }
@@ -146,9 +146,23 @@ Page({
   onClose() {
     this.setData({ show: false });
   },
-
+  send_message(){
+    wx.cloud.callFunction({   //你改参数吧，我不知道传的具体是哪个
+    name:'user',
+    data:{
+    type:'send_distance',
+    openid:app.globalData.openid,
+    distance:0,
+    time:0,
+    step_number:0,   //调用微信运动接口
+    stride:0, 
+    run_time:0,
+    }
+    })
+  },
   onOpen(){
       this.setData({show:true});
+      this.send_message();   //上传数据
   },
 
   countInterval: function () {
