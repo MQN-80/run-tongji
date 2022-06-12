@@ -23,10 +23,10 @@ clickable="true">
   center="{{false}}">
   <view wx:for="{{running_data}}">
     <van-cell-group title="日期：{{item.time}}" inset>
-      <van-cell title="跑步消耗（卡路里）：" value="{{item.calorie}}" />
-      <van-cell title="跑步距离：" value="{{item.distance}}"/>
-      <van-cell title="跑步耗时：" value="{{item.runtime}}"/>
-      <van-cell title="跑步步数：" value="{{item.step_number}}"/>
+      <van-cell title="跑步消耗（卡路里）：" value="{{item.calorie}}卡" />
+      <van-cell title="跑步距离：" value="{{item.distance}}km"/>
+      <van-cell title="跑步耗时：" value="{{item.runTime}}"/>
+      <van-cell title="跑步步数：" value="{{item.step_number}}步"/>
     </van-cell-group>
     <van-divider customStyle="color: #1989fa; border-color: #1989fa; font-size: 30px;"/>
   </view>
