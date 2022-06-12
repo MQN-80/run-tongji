@@ -118,7 +118,7 @@ function gesture_analyse(event){
     sum+=Math.pow(avg-event.head[i][1],2);
     }
     var sum1=0;
-    sum1=Math.sqrt((sum/event.head.length),2)/event.head.length;
+    sum1=100-Math.sqrt((sum/event.head.length),2)/event.head.length;
     console.log("dada");
     
     return{
