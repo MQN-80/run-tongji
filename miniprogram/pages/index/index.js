@@ -171,6 +171,7 @@ Page({
     })
   },
   send_message(){
+    Notify({ type: 'success', message: '数据已上传！', duration: 1000,});
     let that=this;
     wx.cloud.callFunction({   //你改参数吧，我不知道传的具体是哪个
     name:'user',
@@ -187,7 +188,6 @@ Page({
   },
   onOpen(){
       this.setData({show:true});
-      this.send_message();   //上传数据
   },
 
   countInterval: function () {
@@ -213,7 +213,12 @@ Page({
         this.stopRun();
         Notify({ type: 'success', message: '已停止跑步！', duration: 1000,});
         this.getWeRunData(finalStep);  //记录跑步后的步数
-        this.send_message();    //上传数据到云端
+        if(this.data.meters>100&&total_micro_second>10)   
+        //满足一定条件上传云端        
+        this.send_message(); 
+        else{
+          Notify({ type: 'success', message: '跑步时间过短，故不记录', duration: 1000,});
+        }
 
     }
     this.setData({

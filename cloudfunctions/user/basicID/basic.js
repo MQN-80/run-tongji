@@ -87,7 +87,7 @@ async function runRecord(event)
       data:{
         openid:event.openid,
         distance:event.distance,
-        runTime:event.runTime,
+        runTime:event.run_time,
         step_number:event.step_number,
         stride:event.stride,
         time:event.time,

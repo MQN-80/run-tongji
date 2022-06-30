@@ -14,6 +14,7 @@ clickable="true">
   url="/pages/total_time/total_time"
   text="总时长 >"/>
 </van-grid>
+<button >刷新</button>
 <view>
   <van-divider
   contentPosition="center"

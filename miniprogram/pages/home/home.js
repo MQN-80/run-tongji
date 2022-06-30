@@ -45,6 +45,10 @@ Page({
             avatorUrl:app.globalData.avatorUrl
         })
     },
+    update()  //刷新页面
+    {
+       this.get_runRecord();
+    },
     get_runRecord: function(){
         var that=this;
         wx.cloud.callFunction({
