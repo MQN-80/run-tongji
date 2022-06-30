@@ -14,6 +14,9 @@ exports.main=async(event,context)=>{
         case'gesture_analyse':{
             return gesture_analyse(event);
         }
+        case'find_step':{
+            return find_step(event);
+        }
     }
 }
 /*获取身体数据信息
@@ -130,4 +133,13 @@ function gesture_analyse(event){
             head:sum1.toFixed(2),
         }
     }
+}
+/**
+ * 获取微信运动步数
+ */
+ function find_step(event)
+{
+  let weRunData = event.weRunData;
+  //同步运动数据
+  return weRunData;
 }

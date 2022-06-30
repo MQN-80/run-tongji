@@ -1,4 +1,5 @@
 var QQMapWX = require('../../QQmap/qqmap-wx-jssdk.js');
+var util = require('../../utils/util.js')
 var countTooGetLocation = 0;
 var total_micro_second = 0;
 var starRun = 0;
@@ -10,7 +11,8 @@ var pause=true;
 var qqmapsdk;
 var app=getApp();
 import Notify from "../../miniprogram_npm/@vant/weapp/notify/notify";
-
+var currentStep=0;
+var finalStep=0;
 /* 毫秒级倒计时 */
 function count_down(that) {
     
@@ -27,7 +29,6 @@ function count_down(that) {
         that.getLocation();
         countTooGetLocation = 0;
         /*************** */
-        console.log('re');
         point.push({latitude: that.data.latitude, longitude : that.data.longitude});
         //console.log(point);
         drawline();
@@ -120,6 +121,7 @@ Page({
   },
   onShow: function () {
   this.get_total();
+  this.getWeRunData(currentStep);  //跑步前记录当前步数
   },
   /*获取总跑步数据
   */
@@ -146,17 +148,40 @@ Page({
   onClose() {
     this.setData({ show: false });
   },
+  getWeRunData(input){
+    var that = this
+    wx.getWeRunData({
+      success(res){
+        console.log(res)
+       wx.cloud.callFunction({
+        name:'user',
+        data:{
+         type:'bodydata',
+         option:'find_step',
+         weRunData: wx.cloud.CloudID(res.cloudID)  //直到云函数被替换
+        }
+      }).then(res=>{
+      console.log(res)
+      input=res.result.data.stepInfoList[30];
+        that.setData({
+          stepInfoList: res.result
+        })
+      })
+      }
+    })
+  },
   send_message(){
+    let that=this;
     wx.cloud.callFunction({   //你改参数吧，我不知道传的具体是哪个
     name:'user',
     data:{
     type:'send_distance',
     openid:app.globalData.openid,
-    distance:0,
-    time:0,
-    step_number:0,   //调用微信运动接口
-    stride:0, 
-    run_time:0,
+    distance:that.data.meters,
+    time:util.formatTime(new Date()),
+    step_number:finalStep-currentStep,   //两次步数相减
+    stride:that.data.meters/(finalStep-currentStep), 
+    run_time:total_micro_second,
     }
     })
   },
@@ -187,6 +212,9 @@ Page({
     {
         this.stopRun();
         Notify({ type: 'success', message: '已停止跑步！', duration: 1000,});
+        this.getWeRunData(finalStep);  //记录跑步后的步数
+        this.send_message();    //上传数据到云端
+
     }
     this.setData({
         show1:true,
@@ -322,8 +350,6 @@ Page({
       isHighAccuracy: true,
       type: 'gcj02', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
       success: function(res){
-        console.log("res----------")
-        console.log(res)
  
         //make datas 
         var newCover = {
@@ -333,8 +359,6 @@ Page({
           };
         var oriCovers = that.data.covers;
  
-        console.log("oriMeters----------")
-        console.log(oriMeters);
         var len = oriCovers.length;
         var lastCover;
         if (len == 0) {
@@ -343,8 +367,6 @@ Page({
         len = oriCovers.length;
         var lastCover = oriCovers[len-1];
  
-        console.log("oriCovers----------")
-        console.log(oriCovers,len);
  
         var newMeters = getDistance(lastCover.latitude,lastCover.longitude,res.latitude,res.longitude)/1000;
  
@@ -353,8 +375,6 @@ Page({
         }
  
         oriMeters = oriMeters + newMeters; 
-        console.log("newMeters----------")
-        console.log(newMeters);
  
  
         var meters = new Number(oriMeters);

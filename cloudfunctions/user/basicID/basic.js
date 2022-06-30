@@ -88,7 +88,6 @@ async function runRecord(event)
         openid:event.openid,
         distance:event.distance,
         runTime:event.runTime,
-        calorie:event.calorie,
         step_number:event.step_number,
         stride:event.stride,
         time:event.time,

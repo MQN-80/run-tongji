@@ -114,6 +114,14 @@ Page({
     onShow: function() {
       let that=this;
       console.log("dada1");
+      that.setData({
+        rightScore:'76',
+        leftScore:'73',
+        right1Score:'74',
+        left1Score:'73',
+        headScore:'93',
+      })
+      return;
       wx.cloud.callFunction({
         name:'user',
         data:{
