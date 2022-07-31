@@ -24,11 +24,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log('benchmarkLevel', benchmarkLevel);
+  onLoad: function () {
     app.globalData.angle_num=[];
     app.globalData.key_position=[];
-    console.log("da1")
   },
   onCameraError(err) {
     console.log('onCameraError>>', err);
